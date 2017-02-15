@@ -6,8 +6,10 @@
 class MP_Led
 {
   public:
-    virtual void on() const = 0;
-    virtual void off() const = 0;
+	virtual void on() const = 0;
+	virtual void off() const = 0;
+	virtual void blink(uint32_t frequency) const = 0 ;
+	virtual void dim(uint8_t percentage) const = 0 ;
 };
 
 #endif
