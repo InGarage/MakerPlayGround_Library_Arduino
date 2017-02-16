@@ -6,12 +6,9 @@
 class MP_Baro
 {
   public:
-	virtual int pressure(char opt[],char treshold[],char unit[]) const = 0;
-	virtual int attitude(char opt[], char treshold[], char unit[]) const = 0;
-	virtual int humidity(char opt[], char treshold[], char unit[]) const = 0;
-	virtual int temp(char opt[], char treshold[], char unit[]) const = 0;
-
-
+	virtual int pressure(char opt[],float treshold,uint8_t unit) const = 0;
+	virtual int attitude(char opt[],float treshold, uint8_t unit) const = 0;
+	
 };
 
 #endif

@@ -16,7 +16,7 @@ void MP_GeneralLed::off() const
   digitalWrite(this->pin, LOW);
 }
 
-void MP_GeneralLed::blink(uint32_t frequency) const
+void MP_GeneralLed::blink(uint16_t frequency) const
 {
 	digitalWrite(this->pin, HIGH);
 	delay(1000 / frequency);

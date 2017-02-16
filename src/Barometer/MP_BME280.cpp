@@ -1,6 +1,5 @@
 #include "MP_BME280.h"
-#include <iostream>
-#include <string>
+
 
 
 MP_BME280::MP_BME280() 
@@ -13,47 +12,47 @@ MP_BME280::MP_BME280()
 
 }
 
-int pressure(char opt[], char treshold[], char unit[]) const
+int MP_BME280::pressure(char opt[], float treshold, uint8_t unit) const
 {
 	
 	if (!strcmp(opt, ">="))
 	{
-		if ((bme.readPressure() / 100.0F) >= std::stoi(treshold))
+		if ((bme.readPressure() / 100.0F) >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if ((bme.readPressure() / 100.0F) > std::stoi(treshold))
+		if ((bme.readPressure() / 100.0F) > treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if ((bme.readPressure() / 100.0F) == std::stoi(treshold))
+		if ((bme.readPressure() / 100.0F) == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if ((bme.readPressure() / 100.0F) < std::stoi(treshold))
+		if ((bme.readPressure() / 100.0F) < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if ((bme.readPressure() / 100.0F) <= std::stoi(treshold))
+		if ((bme.readPressure() / 100.0F) <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if ((bme.readPressure() / 100.0F) != std::stoi(treshold))
+		if ((bme.readPressure() / 100.0F) != treshold)
 			return 1;
 		else
 			return 0;
@@ -62,47 +61,47 @@ int pressure(char opt[], char treshold[], char unit[]) const
 	
 }
 
-int attitude(char opt[], char treshold[], char unit[]) const
+int MP_BME280::attitude(char opt[], float treshold, uint8_t unit) const
 {
 
 	if (!strcmp(opt, ">="))
 	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) >= std::stoi(treshold))
+		if (bme.readAltitude(SEALEVELPRESSURE_HPA) >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) > std::stoi(treshold))
+		if (bme.readAltitude(SEALEVELPRESSURE_HPA) > treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) == std::stoi(treshold))
+		if (bme.readAltitude(SEALEVELPRESSURE_HPA) == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) < std::stoi(treshold))
+		if (bme.readAltitude(SEALEVELPRESSURE_HPA) < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) <= std::stoi(treshold))
+		if (bme.readAltitude(SEALEVELPRESSURE_HPA) <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) != std::stoi(treshold))
+		if (bme.readAltitude(SEALEVELPRESSURE_HPA) != treshold)
 			return 1;
 		else
 			return 0;
@@ -110,103 +109,4 @@ int attitude(char opt[], char treshold[], char unit[]) const
 
 
 }
-
-int humidity(char opt[], char treshold[], char unit[]) const
-{
-
-	if (!strcmp(opt, ">="))
-	{
-		if (bme.readHumidity() >= std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (bme.readHumidity()> std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (bme.readHumidity() == std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (bme.readHumidity() < std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (bme.readHumidity() <= std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (bme.readHumidity() != std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-
-
-}
-
-int temp(char opt[], char treshold[], char unit[]) const
-{
-
-	if (!strcmp(opt, ">="))
-	{
-		if (bme.readTemperature() >= std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (bme.readTemperature()> std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (bme.readTemperature() == std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (bme.readTemperature() < std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (bme.readTemperature() <= std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (bme.readTemperature() != std::stoi(treshold))
-			return 1;
-		else
-			return 0;
-	}
-
-
-}
-
 

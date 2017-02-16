@@ -14,7 +14,7 @@ class MP_TMP007 : MP_Temp
 	 ~MP_TMP007() {};
 
 	
-	 int temp(char opt[], char treshold[], char unit[]) const ;
+	 int temp(char opt[], float treshold, uint8_t unit) const ;
 
   private:
 	  Adafruit_TMP007 tmp007;

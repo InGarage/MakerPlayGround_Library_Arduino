@@ -12,7 +12,7 @@ class MP_GeneralLed //: MP_Led
 
 	void on() const;
 	void off() const;
-	void blink(uint32_t frequency) const;
+	void blink(uint16_t frequency) const;
 	void dim(uint8_t percentage) const;
 
 

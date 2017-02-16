@@ -1,58 +1,58 @@
-#include "MP_TMP007.h"
+#include "MP_BME280.h"
 
 
 
-MP_TMP007::MP_TMP007()
+MP_BME280::MP_BME280() 
 {
 	Serial.begin(9600);
-	if (!tmp007.begin()) {
-		Serial.println("Could not find a valid TMP007 sensor, check wiring!");
+	if (!bme.begin()) {
+		Serial.println("Could not find a valid BME280 sensor, check wiring!");
 		while (1);
 	}
 
 }
 
-int MP_TMP007::temp(char opt[], float treshold, uint8_t unit) const
+int MP_BME280::humidity(char opt[], float treshold, unit8_t unit) const
 {
 
 	if (!strcmp(opt, ">="))
 	{
-		if (tmp007.readDieTempC() >= treshold)
+		if (bme.readHumidity() >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (tmp007.readDieTempC()> treshold)
+		if (bme.readHumidity()> treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (tmp007.readDieTempC() == treshold)
+		if (bme.readHumidity() == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (tmp007.readDieTempC() < treshold)
+		if (bme.readHumidity() < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (tmp007.readDieTempC() <= treshold)
+		if (bme.readHumidity() <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (tmp007.readDieTempC() != treshold)
+		if (bme.readHumidity() != treshold)
 			return 1;
 		else
 			return 0;
@@ -60,5 +60,3 @@ int MP_TMP007::temp(char opt[], float treshold, uint8_t unit) const
 
 
 }
-
-

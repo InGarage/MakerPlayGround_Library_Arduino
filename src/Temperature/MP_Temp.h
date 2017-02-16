@@ -6,7 +6,7 @@
 class MP_Temp
 {
   public:
-     virtual int temp(char opt[], char treshold[], char unit[]) const = 0;
+     virtual int temp(char opt[], float treshold, uint8_t unit) const = 0;
 
 
 };
