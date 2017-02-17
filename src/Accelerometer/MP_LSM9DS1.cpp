@@ -38,42 +38,42 @@ int MP_LSM9DS1::accel_x(char opt[], float treshold, uint8_t unit) const
 	imu.readAccel();
 	if (!strcmp(opt, ">="))
 	{
-		if (imu.calcAccel(imu.ax) >= treshold)
+		if (imu.calcAccel(imu.ax)*9.8f >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (imu.calcAccel(imu.ax)> treshold)
+		if (imu.calcAccel(imu.ax)*9.8f> treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (imu.calcAccel(imu.ax)== treshold)
+		if (imu.calcAccel(imu.ax)*9.8f== treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (imu.calcAccel(imu.ax)< treshold)
+		if (imu.calcAccel(imu.ax)*9.8f< treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (imu.calcAccel(imu.ax)<= treshold)
+		if (imu.calcAccel(imu.ax)*9.8f<= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (imu.calcAccel(imu.ax)!= treshold)
+		if (imu.calcAccel(imu.ax)*9.8f!= treshold)
 			return 1;
 		else
 			return 0;
@@ -87,42 +87,42 @@ int MP_LSM9DS1::accel_y(char opt[], float treshold, uint8_t unit) const
 	imu.readAccel();
 	if (!strcmp(opt, ">="))
 	{
-		if (imu.calcAccel(imu.ay)>= treshold)
+		if (imu.calcAccel(imu.ay)*9.8f>= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (imu.calcGyro(imu.gy)> treshold)
+		if (imu.calcAccel(imu.ay)*9.8f> treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (imu.calcAccel(imu.ay)== treshold)
+		if (imu.calcAccel(imu.ay)*9.8f== treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (imu.calcGyro(imu.gy)< treshold)
+		if (imu.calcAccel(imu.ay)*9.8f< treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (imu.calcAccel(imu.ay)<= treshold)
+		if (imu.calcAccel(imu.ay)*9.8f<= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (imu.calcAccel(imu.ay)!= treshold)
+		if (imu.calcAccel(imu.ay)*9.8f!= treshold)
 			return 1;
 		else
 			return 0;
@@ -136,42 +136,42 @@ int MP_LSM9DS1::accel_z(char opt[], float treshold, uint8_t unit) const
 	imu.readAccel();
 	if (!strcmp(opt, ">="))
 	{
-		if (imu.calcAccel(imu.az) >= treshold)
+		if (imu.calcAccel(imu.az)*9.8f >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (imu.calcAccel(imu.az)> treshold)
+		if (imu.calcAccel(imu.az)*9.8f> treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (imu.calcAccel(imu.az) == treshold)
+		if (imu.calcAccel(imu.az)*9.8f == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (imu.calcAccel(imu.az)< treshold)
+		if (imu.calcAccel(imu.az)*9.8f< treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (imu.calcAccel(imu.az) <= treshold)
+		if (imu.calcAccel(imu.az)*9.8f <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (imu.calcAccel(imu.az) != treshold)
+		if (imu.calcAccel(imu.az)*9.8f != treshold)
 			return 1;
 		else
 			return 0;
