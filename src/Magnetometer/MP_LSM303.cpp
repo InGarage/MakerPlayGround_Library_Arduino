@@ -3,7 +3,9 @@
 
 MP_LSM303::MP_LSM303()
 {
-
+#ifndef ESP8266
+	while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
+#endif
 	Serial.begin(9600);
 	if (!lsm.begin()) {
 		Serial.println("Could not find a valid LSM303 sensor, check wiring!");
