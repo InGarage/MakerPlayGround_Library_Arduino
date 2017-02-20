@@ -12,7 +12,7 @@
 class MP_LSM303 : MP_Mag
 {
   public:
-	  MP_LSM303();
+	 
 	 ~MP_LSM303() {};
 	 int compass(char opt[]) const ;
 	 int mag_x(char opt[], float treshold, uint8_t unit) const ;
@@ -22,7 +22,8 @@ class MP_LSM303 : MP_Mag
 	
 
   private:
-	  Adafruit_LSM303 lsm;
+	  Adafruit_LSM303_Mag_Unified mag = Adafruit_LSM303_Mag_Unified(12345);
+      sensors_event_t event;
 	 
 
 };

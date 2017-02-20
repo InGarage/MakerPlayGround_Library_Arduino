@@ -5,7 +5,7 @@
 void MP_Si7021::init() const
 {
 	sensor = Adafruit_Si7021();
-	Serial.begin(115200);
+
 	if (!sensor.begin()) {
 		Serial.println("Could not find a valid Si7021 sensor, check wiring!");
 		while (1);

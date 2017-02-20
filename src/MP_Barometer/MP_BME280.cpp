@@ -4,7 +4,7 @@
 
 void MP_BME280::init() const 
 {
-	Serial.begin(9600);
+	
 	if (!bme.begin()) {
 		Serial.println("Could not find a valid BME280 sensor, check wiring!");
 		while (1);

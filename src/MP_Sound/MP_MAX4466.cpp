@@ -13,46 +13,47 @@ void MP_MAX4466::init() const
 }
 
 int MP_MAX4466::checkVol(char opt[], float treshold) const
-{
+{ 
+	
 
 	if (!strcmp(opt, ">="))
 	{
-		if (analogRead(pin)/1024 >= treshold)
+		if (analogRead(pin) >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (analogRead(pin)/1024> treshold)
+		if (analogRead(pin)> treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (analogRead(pin)/1024 == treshold)
+		if (analogRead(pin) == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (analogRead(pin)/1024 < treshold)
+		if (analogRead(pin) < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (analogRead(pin)/1024 <= treshold)
+		if (analogRead(pin) <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (analogRead(pin)/1024 != treshold)
+		if (analogRead(pin) != treshold)
 			return 1;
 		else
 			return 0;

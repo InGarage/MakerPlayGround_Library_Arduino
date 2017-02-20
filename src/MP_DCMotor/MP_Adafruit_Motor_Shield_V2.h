@@ -10,20 +10,19 @@
 class MP_Adafruit_Motor_Shield_V2 : MP_DCMotor
 {
   public:
-	  MP_Adafruit_Motor_Shield_V2(uint8_t pin); /* port motor sheild */
+	MP_Adafruit_Motor_Shield_V2(uint8_t pin) ;
 	~MP_Adafruit_Motor_Shield_V2() {};
-	void on(uint8_t direction, uint8_t speed) const;
+	void on(uint8_t dir, uint8_t speed) const;
 	void reverse() const;
 	void set_speed(uint8_t speed) const;
 	void stop() const;
 	void init() const;
 	
-
   private:
-	uint8_t direction;  /* 1 = CW = FORWARD , 2 = CCW = BACKWARD */
-	Adafruit_MotorShield AFMS;
+	 
+	Adafruit_MotorShield AFMS =Adafruit_MotorShield();
 	Adafruit_DCMotor *myMotor;
-
+	uint8_t pin=0; 
 };
 
 #endif

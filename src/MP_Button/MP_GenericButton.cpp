@@ -7,7 +7,7 @@ MP_GenericButton::MP_GenericButton(uint8_t pin)
 
 }
 
-void MP_GenericButton::init(uint8_t pin) const
+void MP_GenericButton::init() const
 
 {
 	pinMode(pin, INPUT_PULLUP);
@@ -26,18 +26,20 @@ int MP_GenericButton::release() const
 
 int MP_GenericButton::doubleRelease() const
 {
-	
+	int count=0;
+	int returnVal = 0;
 	if (digitalRead(pin) == LOW)
 	{
 		while (digitalRead(pin) == LOW);
-		while (count < 100)
+		while (count < 500)
 		{
 			count++;
 			if (digitalRead(pin) == LOW)
 				returnVal++;
 		}
 		while (digitalRead(pin) == LOW);
-		return 1;
+		if(returnVal>1)
+			return 1;
 	}
 	return 0;
 

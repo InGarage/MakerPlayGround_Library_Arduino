@@ -2,11 +2,10 @@
 
 
 
-
 void MP_TMP007::init() const
 {
 
-	Serial.begin(9600);
+	
 	if (!tmp007.begin()) {
 		Serial.println("Could not find a valid TMP007 sensor, check wiring!");
 		while (1);

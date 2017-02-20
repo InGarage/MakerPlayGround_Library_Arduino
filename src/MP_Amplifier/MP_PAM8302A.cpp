@@ -1,29 +1,20 @@
 #include "MP_PAM8302A.h"
 
 
-MP_PAM8302A::MP_PAM8302A(uint8_t SDPin, uint8_t speakerPin)
+MP_PAM8302A::MP_PAM8302A( uint8_t speakerPin)
 	:speakerPin(speakerPin)
-	: SDPin(SDPin)
+	
 {
 	
 }
+
 
 
 void MP_PAM8302A::init() const
 {
-	tmrpcm.speakerPin = speakerPin; 
-	Serial.begin(115200);
-
-	if (!SD.begin(SDPin)) {  // see if the card is present and can be initialized:
-		Serial.println("SD fail");
-		return;   // don't do anything more if not
-	}
-	else {
-		Serial.println("SD ok");
-	}
-	
+	pinMode(speakerPin,OUTPUT) ;
 }
-
+/*
 void MP_PAM8302A::play(char file[], float vol) const
 {
 
@@ -58,6 +49,7 @@ void MP_PAM8302A::volDown() const
 	tmrpcm.volume(0);
 
 }
+
 void MP_PAM8302A::setVol(float vol) const
 {
 	if (vol < 12.5f)
@@ -83,10 +75,11 @@ void MP_PAM8302A::stop() const
 {
 	tmrpcm.disable();
 }
+*/
 void MP_PAM8302A::beep(uint16_t hz, uint16_t dur) const
 {
 	
-	digitalWrite(speakerPin, HIGH);
-	delayMicroseconds(0.5f*(1 / Hz)*1000000);
-	digitalWrite(speakerPin, LOW);
+	tone(speakerPin, hz) ;
+	delay(dur) ;
+	
 }

@@ -1,17 +1,25 @@
 #include "MP_LSM303.h"
-
+#define ERROR 10.0f
 
 void MP_LSM303::init() const
 {
 #ifndef ESP8266
-	while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
+  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
 #endif
-	Serial.begin(9600);
-	if (!lsm.begin()) {
-		Serial.println("Could not find a valid LSM303 sensor, check wiring!");
-		while (1);
-	}
 
+  Serial.println("Magnetometer Test"); Serial.println("");
+
+  /* Enable auto-gain */
+  mag.enableAutoRange(true);
+
+  /* Initialise the sensor */
+  if(!mag.begin())
+  {
+    /* There was a problem detecting the LSM303 ... check your connections */
+    Serial.println("Could not find a valid LSM303 sensor, check wiring!");
+    while(1);
+
+}
 }
 
 int MP_LSM303::compass(char opt[]) const
@@ -30,21 +38,22 @@ int MP_LSM303::compass(char opt[]) const
 	{
 		heading = 360 + heading;
 	}
-	if ((heading == 0.0f || heading == 360.0f ) && !strcmp(opt, "N"))
+
+	if (((heading > 0.0f && heading < 0.0f + ERROR )|| (heading > 360.0f - ERROR && heading < 360.0f ) ) && !strcmp(opt, "N"))
 		return 1;
-	else if (heading == 45.0f && !strcmp(opt, "NE"))
+	else if (heading > 45.0f - ERROR && heading < 45.0f + ERROR && !strcmp(opt, "NE"))
 		return 1;
-	else if (heading == 90.0f && !strcmp(opt, "E"))
+	else if (heading > 90.0f - ERROR && heading < 90.0f + ERROR && !strcmp(opt, "E"))
 		return 1;
-	else if (heading == 135.0f && !strcmp(opt, "SE"))
+	else if (heading > 135.0f - ERROR && heading < 135.0f + ERROR && !strcmp(opt, "SE"))
 		return 1;
-	else if (heading == 180.0f && !strcmp(opt, "S"))
+	else if (heading > 180.0f - ERROR && heading < 180.0f + ERROR && !strcmp(opt, "S"))
 		return 1;
-	else if (heading == 225.0f && !strcmp(opt, "SW"))
+	else if (heading > 225.0f - ERROR && heading < 225.0f + ERROR && !strcmp(opt, "SW"))
 		return 1;
-	else if (heading == 270.0f && !strcmp(opt, "W"))
+	else if (heading > 270.0f - ERROR && heading < 270.0f + ERROR && !strcmp(opt, "W"))
 		return 1;
-	else if (heading == 315.0f && !strcmp(opt, "NW"))
+	else if (heading > 315.0f - ERROR && heading < 315.0f + ERROR && !strcmp(opt, "NW"))
 		return 1;
 	else
 		return 0;
@@ -53,45 +62,45 @@ int MP_LSM303::compass(char opt[]) const
 
 int MP_LSM303::mag_x(char opt[], float treshold, uint8_t unit) const
 {
-	lsm.read();
+	mag.getEvent(&event);
 	if (!strcmp(opt, ">="))
 	{
-		if (lsm.magData.x >= treshold)
+		if (event.magnetic.x >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (lsm.magData.x > treshold)
+		if (event.magnetic.x > treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (lsm.magData.x == treshold)
+		if (event.magnetic.x == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (lsm.magData.x < treshold)
+		if (event.magnetic.x < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (lsm.magData.x <= treshold)
+		if (event.magnetic.x <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (lsm.magData.x != treshold)
+		if (event.magnetic.x != treshold)
 			return 1;
 		else
 			return 0;
@@ -101,45 +110,45 @@ int MP_LSM303::mag_x(char opt[], float treshold, uint8_t unit) const
 }
 int MP_LSM303::mag_y(char opt[], float treshold, uint8_t unit) const
 {
-	lsm.read();
+	mag.getEvent(&event);
 	if (!strcmp(opt, ">="))
 	{
-		if (lsm.magData.y >= treshold)
+		if (event.magnetic.y >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (lsm.magData.y > treshold)
+		if (event.magnetic.y > treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (lsm.magData.y == treshold)
+		if (event.magnetic.y == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (lsm.magData.y < treshold)
+		if (event.magnetic.y < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (lsm.magData.y <= treshold)
+		if (event.magnetic.y <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (lsm.magData.y != treshold)
+		if (event.magnetic.y != treshold)
 			return 1;
 		else
 			return 0;
@@ -149,45 +158,45 @@ int MP_LSM303::mag_y(char opt[], float treshold, uint8_t unit) const
 }
 int MP_LSM303::mag_z(char opt[], float treshold, uint8_t unit) const
 {
-	lsm.read();
+	mag.getEvent(&event);
 	if (!strcmp(opt, ">="))
 	{
-		if (lsm.magData.z >= treshold)
+		if (event.magnetic.z >= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, ">"))
 	{
-		if (lsm.magData.z > treshold)
+		if (event.magnetic.z > treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "="))
 	{
-		if (lsm.magData.z == treshold)
+		if (event.magnetic.z == treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<"))
 	{
-		if (lsm.magData.z < treshold)
+		if (event.magnetic.z < treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "<="))
 	{
-		if (lsm.magData.z <= treshold)
+		if (event.magnetic.z <= treshold)
 			return 1;
 		else
 			return 0;
 	}
 	else if (!strcmp(opt, "!="))
 	{
-		if (lsm.magData.z != treshold)
+		if (event.magnetic.z != treshold)
 			return 1;
 		else
 			return 0;
