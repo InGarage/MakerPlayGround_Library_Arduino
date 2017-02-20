@@ -7,7 +7,7 @@
 class MP_DCMotor
 {
   public:
-	 virtual void on(uint8_t dir, uint8_t speed) const=0;
+	 virtual void on(char dir[], uint8_t speed) const=0;
 	 virtual void reverse() const=0;
 	 virtual void set_speed(uint8_t speed) const=0;
 	 virtual void stop() const =0;

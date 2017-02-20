@@ -1,5 +1,5 @@
 #include "MP_Adafruit_Motor_Shield_V2.h"
-int a=0 ;
+
  uint8_t direction; 
 
 MP_Adafruit_Motor_Shield_V2::MP_Adafruit_Motor_Shield_V2(uint8_t pin)
@@ -18,20 +18,24 @@ void MP_Adafruit_Motor_Shield_V2::init() const
 
 }
 
-void MP_Adafruit_Motor_Shield_V2::on(uint8_t dir, uint8_t speed) const
+void MP_Adafruit_Motor_Shield_V2::on(char dir[], uint8_t speed) const
   
 {
-	direction = dir ;
+	
+
+	if(!strcmp(dir,"CW"))
+		direction = 1 ;
+	else if(!strcmp(dir,"CW"))
+		direction = 2 ;
+
 	myMotor->setSpeed(speed);	
 	if (direction == 1)
 	{
-		myMotor->run(FORWARD);
-		direction = dir ;
+		myMotor->run(FORWARD);		
 	}
 	else if (direction == 2)
 	{
-		myMotor->run(BACKWARD);
-		direction = dir ;
+		myMotor->run(BACKWARD);		
 	}
 }
 void MP_Adafruit_Motor_Shield_V2::reverse() const
