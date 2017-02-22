@@ -9,11 +9,11 @@ MP_GeneralLed::MP_GeneralLed(uint8_t pin)
 
 void MP_GeneralLed::init() const
 {
-	pinMode(pin, OUTPUT);
+	pinMode(this->pin, OUTPUT);
 }
 
 
-void MP_GeneralLed::on() const
+void MP_GeneralLed::on(int a) const
 {
   digitalWrite(this->pin, HIGH);
 }

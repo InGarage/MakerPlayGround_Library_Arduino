@@ -2,10 +2,10 @@
 
  uint8_t direction; 
 
-MP_Adafruit_Motor_Shield_V2::MP_Adafruit_Motor_Shield_V2(uint8_t pin)
+MP_Adafruit_Motor_Shield_V2::MP_Adafruit_Motor_Shield_V2()
 	
 {
-	myMotor = AFMS.getMotor(pin);
+	myMotor = AFMS.getMotor(1);
 	
 }
 

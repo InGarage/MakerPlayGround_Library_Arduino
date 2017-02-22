@@ -10,7 +10,7 @@
 class MP_Adafruit_Motor_Shield_V2 : MP_DCMotor
 {
   public:
-	MP_Adafruit_Motor_Shield_V2(uint8_t pin) ;
+	MP_Adafruit_Motor_Shield_V2() ;
 	~MP_Adafruit_Motor_Shield_V2() {};
 	void on(char dir[], uint8_t speed) const;
 	void reverse() const;

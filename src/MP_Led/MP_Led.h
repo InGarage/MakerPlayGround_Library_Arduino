@@ -6,7 +6,7 @@
 class MP_Led
 {
   public:
-	virtual void on() const = 0;
+	virtual void on(int a) const = 0;
 	virtual void off() const = 0;
 	virtual void dim(uint8_t percentage) const = 0 ;
 	virtual void init() const = 0;

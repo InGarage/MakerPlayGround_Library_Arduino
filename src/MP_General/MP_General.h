@@ -6,7 +6,7 @@
 class MP_General
 {
   public:
-	virtual int delayFn(uint16_t time) const = 0;
+	virtual int delayFn(char a[],uint16_t time, char b[]) const = 0;
 	virtual void init() const=0;
 
 	

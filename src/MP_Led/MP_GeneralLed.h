@@ -10,7 +10,7 @@ class MP_GeneralLed //: MP_Led
 	MP_GeneralLed(uint8_t pin);
 	~MP_GeneralLed() {};
 
-	void on() const;
+	void on(int a) const;
 	void off() const;
 	void dim(uint8_t percentage) const;
 	void init() const;
