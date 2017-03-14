@@ -22,7 +22,9 @@ class MP_PAM8302A //: MP_Amp
 	 void volDown() const  ;
 	 void setVol(float vol) const  ;
 	 void stop() const  ; */
-	 void beep(uint16_t hz, uint16_t dur) const  ;
+
+	 void beep(float percentage, uint16_t dur) const  ;
+	 void tone(uint16_t hz, uint16_t dur) const  ;
 	 void init() const;
 
 private:

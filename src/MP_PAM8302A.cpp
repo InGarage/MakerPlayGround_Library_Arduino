@@ -76,7 +76,16 @@ void MP_PAM8302A::stop() const
 	tmrpcm.disable();
 }
 */
-void MP_PAM8302A::beep(uint16_t hz, uint16_t dur) const
+
+void MP_PAM8302A::beep(float percentage, uint16_t dur) const
+{
+	
+	analogWrite(speakerPin, 255*(percentage/100.0)) ;
+	delay(dur) ;
+	
+}
+
+void MP_PAM8302A::tone(uint16_t hz, uint16_t dur) const
 {
 	
 	tone(speakerPin, hz) ;
