@@ -1,8 +1,9 @@
+
 #include "MP_L3GD20.h"
 #define PI 3.14159265359 
 
 
-void MP_L3GD20::init() const
+void MP_L3GD20::init() 
 {
 
 	
@@ -20,7 +21,7 @@ void MP_L3GD20::init() const
   }
 }
 
-int MP_L3GD20::rotate_x(char opt[], float treshold, uint8_t unit) const
+int MP_L3GD20::rotate_x(char opt[], float treshold, uint8_t unit) 
 {
 	
 	gyro.getEvent(&event);
@@ -70,7 +71,7 @@ int MP_L3GD20::rotate_x(char opt[], float treshold, uint8_t unit) const
 	
 	
 }
-int MP_L3GD20::rotate_y(char opt[], float treshold, uint8_t unit) const
+int MP_L3GD20::rotate_y(char opt[], float treshold, uint8_t unit) 
 {
 	gyro.getEvent(&event);
 
@@ -119,7 +120,7 @@ int MP_L3GD20::rotate_y(char opt[], float treshold, uint8_t unit) const
 
 
 }
-int MP_L3GD20::rotate_z(char opt[], float treshold, uint8_t unit) const
+int MP_L3GD20::rotate_z(char opt[], float treshold, uint8_t unit) 
 {
 	gyro.getEvent(&event);
 	if (!strcmp(opt, ">="))

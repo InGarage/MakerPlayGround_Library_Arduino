@@ -1,3 +1,4 @@
+
 #ifndef MP_BME280_H
 #define MP_BME280_H
 
@@ -16,11 +17,15 @@ class MP_BME280 //: MP_Baro
 
 	 ~MP_BME280() {};
 
-	 int pressure(char opt[], float treshold, uint8_t unit) const ;
-	 int attitude(char opt[], float treshold, uint8_t unit) const ;
-	 int humidity(char opt[], float treshold, uint8_t unit) const ;
-	 int checkTemp(char opt[], float treshold, uint8_t unit)const ;
-	 void init() const;
+	 int pressure(char opt[], float treshold, uint8_t unit)  ;
+	 int attitude(char opt[], float treshold, uint8_t unit)  ;
+	 int humidity(char opt[], float treshold, uint8_t unit)  ;
+	 int checkTemp(char opt[], float treshold, uint8_t unit) ;
+	 float getPressure() ;
+	 float getAttitude() ;
+	 float getHumidity() ;
+	 float getTemp();
+	 void init() ;
 
   private:
 	  Adafruit_BME280 bme;

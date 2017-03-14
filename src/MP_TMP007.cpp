@@ -2,7 +2,7 @@
 
 
 
-void MP_TMP007::init() const
+void MP_TMP007::init() 
 {
 
 	
@@ -14,7 +14,7 @@ void MP_TMP007::init() const
 }
 
 
-int MP_TMP007::checkTemp(char opt[], float treshold, uint8_t unit) const
+int MP_TMP007::checkTemp(char opt[], float treshold, uint8_t unit) 
 {
 	
 	if (!strcmp(opt, ">="))

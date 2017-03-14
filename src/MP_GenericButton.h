@@ -12,9 +12,9 @@ class MP_GenericButton //: MP_Button
 	 MP_GenericButton(uint8_t pin) ;
 	 ~MP_GenericButton() {};
 
-	  int release() const ;
-	  int doubleRelease() const ;
-	  void init() const;
+	  int release()  ;
+	  int doubleRelease()  ;
+	  void init() ;
 	 
 
    private:

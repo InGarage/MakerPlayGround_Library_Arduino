@@ -2,11 +2,11 @@
 
 
 
-void MP_Delay::init() const
+void MP_Delay::init() 
 {
 
 }
-int MP_Delay::delayFn(char a[],uint16_t time, char b[]) const
+int MP_Delay::delayFn(char a[],uint16_t time, char b[]) 
 {
 	delay(time);
 	return 1;

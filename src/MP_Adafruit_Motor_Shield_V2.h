@@ -1,6 +1,7 @@
 #ifndef MP_ADAFRUIT_MOTOR_SHIELD_V2_H
 #define MP_ADAFRUIT_MOTOR_SHIELD_V2_H
 
+
 //#include "MP_DCMotor.h"
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
@@ -12,11 +13,11 @@ class MP_Adafruit_Motor_Shield_V2 //: MP_DCMotor
   public:
 	MP_Adafruit_Motor_Shield_V2() ;
 	~MP_Adafruit_Motor_Shield_V2() {};
-	void on(char dir[], uint8_t speed) const;
-	void reverse() const;
-	void set_speed(uint8_t speed) const;
-	void stop() const;
-	void init() const;
+	void on(char dir[], uint8_t speed) ;
+	void reverse() ;
+	void set_speed(uint8_t speed) ;
+	void stop() ;
+	void init() ;
 	
   private:
 	 

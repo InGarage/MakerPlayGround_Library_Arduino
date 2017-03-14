@@ -11,9 +11,9 @@ class MP_Si7021 //: MP_Humidity
   public:
 
 	 ~MP_Si7021() {};
-	 int humidity(char opt[], float treshold, uint8_t unit) const ;
-	 int checkTemp(char opt[], float treshold, uint8_t unit) const ;
-	 void init() const;
+	 int humidity(char opt[], float treshold, uint8_t unit)  ;
+	 int checkTemp(char opt[], float treshold, uint8_t unit)  ;
+	 void init() ;
 	
 
   private:

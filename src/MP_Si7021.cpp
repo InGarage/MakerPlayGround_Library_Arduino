@@ -2,7 +2,7 @@
 
 
 
-void MP_Si7021::init() const
+void MP_Si7021::init() 
 {
 	sensor = Adafruit_Si7021();
 
@@ -13,7 +13,7 @@ void MP_Si7021::init() const
 
 }
 
-int MP_Si7021::checkTemp(char opt[], float treshold, uint8_t unit) const
+int MP_Si7021::checkTemp(char opt[], float treshold, uint8_t unit) 
 {
 
 	if (!strcmp(opt, ">="))
@@ -64,7 +64,7 @@ int MP_Si7021::checkTemp(char opt[], float treshold, uint8_t unit) const
 }
 
 
-int MP_Si7021::humidity(char opt[], float treshold, uint8_t unit) const
+int MP_Si7021::humidity(char opt[], float treshold, uint8_t unit) 
 {
 
 	if (!strcmp(opt, ">="))

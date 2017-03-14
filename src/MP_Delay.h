@@ -13,8 +13,8 @@ class MP_Delay //: MP_General
 	  
 	 ~MP_Delay() {};
 
-	 int delayFn(char a[],uint16_t time, char b[]) const ;
-	 void init() const;
+	 int delayFn(char a[],uint16_t time, char b[])  ;
+	 void init() ;
 
 
 };

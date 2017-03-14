@@ -1,3 +1,4 @@
+
 #ifndef MP_L3GD20_H
 #define MP_L3GD20_H
 
@@ -15,10 +16,10 @@ class MP_L3GD20 //: MP_Gyro
 	
 	 ~MP_L3GD20() {};
 
-	 int rotate_x(char opt[], float treshold, uint8_t unit) const ;
-	 int rotate_y(char opt[], float treshold, uint8_t unit) const ;
-	 int rotate_z(char opt[], float treshold, uint8_t unit) const;
-	 void init() const;
+	 int rotate_x(char opt[], float treshold, uint8_t unit)  ;
+	 int rotate_y(char opt[], float treshold, uint8_t unit)  ;
+	 int rotate_z(char opt[], float treshold, uint8_t unit) ;
+	 void init() ;
 	
 
   private:
@@ -27,5 +28,6 @@ class MP_L3GD20 //: MP_Gyro
 	 
 
 };
+
 
 #endif

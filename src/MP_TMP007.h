@@ -13,8 +13,8 @@ class MP_TMP007  //: MP_Temp
 	 ~MP_TMP007() {};
 
 	
-	 int checkTemp(char opt[], float treshold, uint8_t unit) const ;
-	 void init() const;
+	 int checkTemp(char opt[], float treshold, uint8_t unit)  ;
+	 void init() ;
 
   private:
 	  Adafruit_TMP007 tmp007;

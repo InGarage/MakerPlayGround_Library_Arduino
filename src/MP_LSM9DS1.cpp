@@ -21,7 +21,7 @@ MP_LSM9DS1::MP_LSM9DS1()
 }
 
 
-void MP_LSM9DS1::init() const
+void MP_LSM9DS1::init() 
 {
 	// Before initializing the IMU, there are a few settings
 	// we may need to adjust. Use the settings struct to set
@@ -46,7 +46,7 @@ void MP_LSM9DS1::init() const
 
 
 
-int MP_LSM9DS1::accel_x(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::accel_x(char opt[], float treshold, uint8_t unit) 
 {
 	imu.readAccel();
     Serial.println(imu.calcAccel(imu.ax)*G ) ;
@@ -96,7 +96,7 @@ int MP_LSM9DS1::accel_x(char opt[], float treshold, uint8_t unit) const
 	
 }
 
-int MP_LSM9DS1::accel_y(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::accel_y(char opt[], float treshold, uint8_t unit) 
 {
 	imu.readAccel();
 	if (!strcmp(opt, ">="))
@@ -145,7 +145,7 @@ int MP_LSM9DS1::accel_y(char opt[], float treshold, uint8_t unit) const
 
 }
 
-int MP_LSM9DS1::accel_z(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::accel_z(char opt[], float treshold, uint8_t unit) 
 {
 	imu.readAccel();
 	if (!strcmp(opt, ">="))
@@ -192,7 +192,7 @@ int MP_LSM9DS1::accel_z(char opt[], float treshold, uint8_t unit) const
 	}
 }
 
-int MP_LSM9DS1::compass(char opt[]) const
+int MP_LSM9DS1::compass(char opt[]) 
 {
 	imu.readMag();
 	float heading=0;
@@ -238,7 +238,7 @@ int MP_LSM9DS1::compass(char opt[]) const
 
 }
 
-int MP_LSM9DS1::mag_x(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::mag_x(char opt[], float treshold, uint8_t unit) 
 {
 	treshold *= 100; //convert unit uT to gass
 	imu.readMag();
@@ -288,7 +288,7 @@ int MP_LSM9DS1::mag_x(char opt[], float treshold, uint8_t unit) const
 	
 }
 
-int MP_LSM9DS1::mag_y(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::mag_y(char opt[], float treshold, uint8_t unit) 
 {
 	treshold *= 100; //convert unit uT to gass
 	imu.readMag();
@@ -338,7 +338,7 @@ int MP_LSM9DS1::mag_y(char opt[], float treshold, uint8_t unit) const
 
 }
 
-int MP_LSM9DS1::mag_z(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::mag_z(char opt[], float treshold, uint8_t unit) 
 {
 	treshold *= 100; //convert unit uT to gass
 	imu.readMag();
@@ -388,7 +388,7 @@ int MP_LSM9DS1::mag_z(char opt[], float treshold, uint8_t unit) const
 
 }
 
-int MP_LSM9DS1::rotate_x(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::rotate_x(char opt[], float treshold, uint8_t unit) 
 {
 	imu.readGyro();
 	if (!strcmp(opt, ">="))
@@ -437,7 +437,7 @@ int MP_LSM9DS1::rotate_x(char opt[], float treshold, uint8_t unit) const
 	
 }
 
-int MP_LSM9DS1::rotate_y(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::rotate_y(char opt[], float treshold, uint8_t unit) 
 {
 	imu.readGyro();
 	if (!strcmp(opt, ">="))
@@ -486,7 +486,7 @@ int MP_LSM9DS1::rotate_y(char opt[], float treshold, uint8_t unit) const
 
 }
 
-int MP_LSM9DS1::rotate_z(char opt[], float treshold, uint8_t unit) const
+int MP_LSM9DS1::rotate_z(char opt[], float treshold, uint8_t unit) 
 {
 	imu.readGyro();
 	if (!strcmp(opt, ">="))
@@ -537,12 +537,12 @@ int MP_LSM9DS1::rotate_z(char opt[], float treshold, uint8_t unit) const
 
 
 
- int MP_LSM9DS1::slop_x(char opt[], float treshold, uint8_t unit) const {}
- int MP_LSM9DS1::slop_y(char opt[], float treshold, uint8_t unit) const {}
- int MP_LSM9DS1::slop_z(char opt[], float treshold, uint8_t unit) const {}
- int MP_LSM9DS1::tap() const{}
- int MP_LSM9DS1::doubletap() const {}
- int MP_LSM9DS1::freefall() const {}
+ int MP_LSM9DS1::slop_x(char opt[], float treshold, uint8_t unit)  {}
+ int MP_LSM9DS1::slop_y(char opt[], float treshold, uint8_t unit)  {}
+ int MP_LSM9DS1::slop_z(char opt[], float treshold, uint8_t unit)  {}
+ int MP_LSM9DS1::tap() {}
+ int MP_LSM9DS1::doubletap()  {}
+ int MP_LSM9DS1::freefall()  {}
 	
 
 

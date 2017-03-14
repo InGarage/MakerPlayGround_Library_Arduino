@@ -1,7 +1,8 @@
+
 #include "MP_LSM303.h"
 #define ERROR 10.0f
 
-void MP_LSM303::init() const
+void MP_LSM303::init() 
 {
 #ifndef ESP8266
   while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
@@ -21,7 +22,7 @@ void MP_LSM303::init() const
 }
 
 
-int MP_LSM303::accel_x(char opt[], float treshold, uint8_t unit) const
+int MP_LSM303::accel_x(char opt[], float treshold, uint8_t unit) 
 {
 	lsm.read();
 	
@@ -70,7 +71,7 @@ int MP_LSM303::accel_x(char opt[], float treshold, uint8_t unit) const
 	
 	
 }
-int MP_LSM303::accel_y(char opt[], float treshold, uint8_t unit) const
+int MP_LSM303::accel_y(char opt[], float treshold, uint8_t unit) 
 {
 	lsm.read();
 	if (!strcmp(opt, ">="))
@@ -118,7 +119,7 @@ int MP_LSM303::accel_y(char opt[], float treshold, uint8_t unit) const
 
 
 }
-int MP_LSM303::accel_z(char opt[], float treshold, uint8_t unit) const
+int MP_LSM303::accel_z(char opt[], float treshold, uint8_t unit) 
 {
 	lsm.read();
 	if (!strcmp(opt, ">="))
@@ -168,7 +169,7 @@ int MP_LSM303::accel_z(char opt[], float treshold, uint8_t unit) const
 }
 
 
-int MP_LSM303::compass(char opt[]) const
+int MP_LSM303::compass(char opt[]) 
 {
 	
 	
@@ -206,7 +207,7 @@ int MP_LSM303::compass(char opt[]) const
 
 }
 
-int MP_LSM303::mag_x(char opt[], float treshold, uint8_t unit) const
+int MP_LSM303::mag_x(char opt[], float treshold, uint8_t unit) 
 {
 	lsm.read();
 	if (!strcmp(opt, ">="))
@@ -254,7 +255,7 @@ int MP_LSM303::mag_x(char opt[], float treshold, uint8_t unit) const
 	
 	
 }
-int MP_LSM303::mag_y(char opt[], float treshold, uint8_t unit) const
+int MP_LSM303::mag_y(char opt[], float treshold, uint8_t unit) 
 {
 	lsm.read();
 	if (!strcmp(opt, ">="))
@@ -302,7 +303,7 @@ int MP_LSM303::mag_y(char opt[], float treshold, uint8_t unit) const
 
 
 }
-int MP_LSM303::mag_z(char opt[], float treshold, uint8_t unit) const
+int MP_LSM303::mag_z(char opt[], float treshold, uint8_t unit) 
 {
 	lsm.read();
 	if (!strcmp(opt, ">="))

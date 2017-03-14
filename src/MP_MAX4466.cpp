@@ -6,13 +6,13 @@ MP_MAX4466::MP_MAX4466(uint8_t pin)
 
 }
 
-void MP_MAX4466::init() const
+void MP_MAX4466::init() 
 {
 	pinMode(pin, INPUT);
 
 }
 
-int MP_MAX4466::checkVol(char opt[], float treshold) const
+int MP_MAX4466::checkVol(char opt[], float treshold) 
 { 
 	
 

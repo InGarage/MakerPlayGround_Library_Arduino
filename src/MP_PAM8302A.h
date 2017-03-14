@@ -17,15 +17,15 @@ class MP_PAM8302A //: MP_Amp
 	 
 	~MP_PAM8302A() {};
 
-	 /*void play(char file[], float vol) const  ;
-	 void volUp() const  ;
-	 void volDown() const  ;
-	 void setVol(float vol) const  ;
-	 void stop() const  ; */
+	 /*void play(char file[], float vol)   ;
+	 void volUp()   ;
+	 void volDown()   ;
+	 void setVol(float vol)   ;
+	 void stop()   ; */
 
-	 void beep(float percentage, uint16_t dur) const  ;
-	 void tone(uint16_t hz, uint16_t dur) const  ;
-	 void init() const;
+	 void beep(float percentage, uint16_t dur)   ;
+	 void tone(uint16_t hz, uint16_t dur)   ;
+	 void init() ;
 
 private:
 	//uint8_t volLevel;

@@ -10,12 +10,12 @@ MP_PAM8302A::MP_PAM8302A( uint8_t speakerPin)
 
 
 
-void MP_PAM8302A::init() const
+void MP_PAM8302A::init() 
 {
 	pinMode(speakerPin,OUTPUT) ;
 }
 /*
-void MP_PAM8302A::play(char file[], float vol) const
+void MP_PAM8302A::play(char file[], float vol) 
 {
 
 	if (vol < 12.5f)
@@ -40,17 +40,17 @@ void MP_PAM8302A::play(char file[], float vol) const
 	tmrpcm.setVolume(volLevel);
 }
 
-void MP_PAM8302A::volUp() const
+void MP_PAM8302A::volUp() 
 {
 	tmrpcm.volume(1);
 }
-void MP_PAM8302A::volDown() const
+void MP_PAM8302A::volDown() 
 {
 	tmrpcm.volume(0);
 
 }
 
-void MP_PAM8302A::setVol(float vol) const
+void MP_PAM8302A::setVol(float vol) 
 {
 	if (vol < 12.5f)
 		volLevel = 0;
@@ -71,13 +71,13 @@ void MP_PAM8302A::setVol(float vol) const
 
 	tmrpcm.setVolume(volLevel);
 }
-void MP_PAM8302A::stop() const
+void MP_PAM8302A::stop() 
 {
 	tmrpcm.disable();
 }
 */
 
-void MP_PAM8302A::beep(float percentage, uint16_t dur) const
+void MP_PAM8302A::beep(float percentage, uint16_t dur) 
 {
 	
 	analogWrite(speakerPin, 255*(percentage/100.0)) ;
@@ -85,7 +85,7 @@ void MP_PAM8302A::beep(float percentage, uint16_t dur) const
 	
 }
 
-void MP_PAM8302A::tone(uint16_t hz, uint16_t dur) const
+void MP_PAM8302A::tone(uint16_t hz, uint16_t dur) 
 {
 	
 	tone(speakerPin, hz) ;

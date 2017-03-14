@@ -13,23 +13,23 @@ class MP_LSM9DS1 //: MP_Accel
   	  MP_LSM9DS1();
 	 ~MP_LSM9DS1() {};
 
-	 int accel_x(char opt[], float treshold, uint8_t unit) const ;
-	 int accel_y(char opt[], float treshold, uint8_t unit) const ;
-	 int accel_z(char opt[], float treshold, uint8_t unit) const;
-	 int slop_x(char opt[], float treshold, uint8_t unit) const ;
-	 int slop_y(char opt[], float treshold, uint8_t unit) const ;
-	 int slop_z(char opt[], float treshold, uint8_t unit) const ;
-	 int rotate_x(char opt[], float treshold, uint8_t unit) const ;
-	 int rotate_y(char opt[], float treshold, uint8_t unit) const ;
-	 int rotate_z(char opt[], float treshold, uint8_t unit) const;
-	 int compass(char opt[]) const ;
-	 int mag_x(char opt[], float treshold, uint8_t unit) const ;
-	 int mag_y(char opt[], float treshold, uint8_t unit) const ;
-	 int mag_z(char opt[], float treshold, uint8_t unit) const;
-	 int tap() const ;
-	 int doubletap() const ;
-	 int freefall() const ;
-	 void init() const;
+	 int accel_x(char opt[], float treshold, uint8_t unit)  ;
+	 int accel_y(char opt[], float treshold, uint8_t unit)  ;
+	 int accel_z(char opt[], float treshold, uint8_t unit) ;
+	 int slop_x(char opt[], float treshold, uint8_t unit)  ;
+	 int slop_y(char opt[], float treshold, uint8_t unit)  ;
+	 int slop_z(char opt[], float treshold, uint8_t unit)  ;
+	 int rotate_x(char opt[], float treshold, uint8_t unit)  ;
+	 int rotate_y(char opt[], float treshold, uint8_t unit)  ;
+	 int rotate_z(char opt[], float treshold, uint8_t unit) ;
+	 int compass(char opt[])  ;
+	 int mag_x(char opt[], float treshold, uint8_t unit)  ;
+	 int mag_y(char opt[], float treshold, uint8_t unit)  ;
+	 int mag_z(char opt[], float treshold, uint8_t unit) ;
+	 int tap()  ;
+	 int doubletap()  ;
+	 int freefall()  ;
+	 void init() ;
 
   private:
 	  LSM9DS1 imu;

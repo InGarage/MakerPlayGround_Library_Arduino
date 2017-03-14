@@ -7,14 +7,14 @@ MP_GenericButton::MP_GenericButton(uint8_t pin)
 
 }
 
-void MP_GenericButton::init() const
+void MP_GenericButton::init() 
 
 {
 	pinMode(pin, INPUT_PULLUP);
 }
 
 
-int MP_GenericButton::release() const
+int MP_GenericButton::release() 
 {
 	int returnVal = 0;
 	if (digitalRead(pin) == LOW)
@@ -24,7 +24,7 @@ int MP_GenericButton::release() const
 }
 
 
-int MP_GenericButton::doubleRelease() const
+int MP_GenericButton::doubleRelease() 
 {
 	int count=0;
 	int returnVal = 0;

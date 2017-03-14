@@ -1,8 +1,9 @@
+
 #include "MP_BME280.h"
 
 
 
-void MP_BME280::init() const 
+void MP_BME280::init()  
 {
 	
 	if (!bme.begin()) {
@@ -12,8 +13,7 @@ void MP_BME280::init() const
 
 }
 
-int MP_BME280::pressure(char opt[], float treshold, uint8_t unit) const
-{
+int MP_BME280::pressure(char opt[], float treshold, uint8_t unit) {
 	
 	if (!strcmp(opt, ">="))
 	{
@@ -61,8 +61,7 @@ int MP_BME280::pressure(char opt[], float treshold, uint8_t unit) const
 	
 }
 
-int MP_BME280::attitude(char opt[], float treshold, uint8_t unit) const
-{
+int MP_BME280::attitude(char opt[], float treshold, uint8_t unit) {
 
 	if (!strcmp(opt, ">="))
 	{
@@ -110,8 +109,7 @@ int MP_BME280::attitude(char opt[], float treshold, uint8_t unit) const
 
 }
 
-int MP_BME280::humidity(char opt[], float treshold, uint8_t unit) const
-{
+int MP_BME280::humidity(char opt[], float treshold, uint8_t unit) {
 
 	if (!strcmp(opt, ">="))
 	{
@@ -157,8 +155,7 @@ int MP_BME280::humidity(char opt[], float treshold, uint8_t unit) const
 	}
 }
 
-int MP_BME280::checkTemp(char opt[], float treshold, uint8_t unit) const
-{
+int MP_BME280::checkTemp(char opt[], float treshold, uint8_t unit) {
 	if (!strcmp(opt, ">="))
 	{
 		if (bme.readTemperature() >= treshold)

@@ -13,8 +13,8 @@ class MP_MAX4466 //: MP_Sound
 	 ~MP_MAX4466() {};
 
 	
-	 int checkVol(char opt[], float treshold) const ;
-	 void init() const;
+	 int checkVol(char opt[], float treshold)  ;
+	 void init() ;
 
   private:
 	  uint8_t pin;
