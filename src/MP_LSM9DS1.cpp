@@ -46,150 +46,22 @@ void MP_LSM9DS1::init()
 
 
 
-int MP_LSM9DS1::accel_x(char opt[], float treshold, uint8_t unit) 
+int MP_LSM9DS1::getAccelX() 
 {
 	imu.readAccel();
-    Serial.println(imu.calcAccel(imu.ax)*G ) ;
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcAccel(imu.ax)*G >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcAccel(imu.ax)*G> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcAccel(imu.ax)*G== treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcAccel(imu.ax)*G< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcAccel(imu.ax)*G<= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcAccel(imu.ax)*G!= treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+	return imu.calcAccel(imu.ax)*G ;	
 }
 
-int MP_LSM9DS1::accel_y(char opt[], float treshold, uint8_t unit) 
+int MP_LSM9DS1::getAccelY() 
 {
 	imu.readAccel();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcAccel(imu.ay)*G>= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcAccel(imu.ay)*G> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcAccel(imu.ay)*G== treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcAccel(imu.ay)*G< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcAccel(imu.ay)*G<= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcAccel(imu.ay)*G!= treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return imu.calcAccel(imu.ay)*G ;
 }
 
-int MP_LSM9DS1::accel_z(char opt[], float treshold, uint8_t unit) 
+int MP_LSM9DS1::getAccelZ() 
 {
 	imu.readAccel();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcAccel(imu.az)*G >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcAccel(imu.az)*G> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcAccel(imu.az)*G == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcAccel(imu.az)*G< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcAccel(imu.az)*G <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcAccel(imu.az)*G != treshold)
-			return 1;
-		else
-			return 0;
-	}
+	return imu.calcAccel(imu.az)*G ;
 }
 
 int MP_LSM9DS1::compass(char opt[]) 
@@ -238,308 +110,45 @@ int MP_LSM9DS1::compass(char opt[])
 
 }
 
-int MP_LSM9DS1::mag_x(char opt[], float treshold, uint8_t unit) 
+double MP_LSM9DS1::getMagX() 
 {
-	treshold *= 100; //convert unit uT to gass
 	imu.readMag();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcMag(imu.mx) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcMag(imu.mx)> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcMag(imu.mx)== treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcMag(imu.mx)< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcMag(imu.mx)<= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcMag(imu.mx)!= treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+	return imu.calcMag(imu.mx)/100.0 ;	
 }
 
-int MP_LSM9DS1::mag_y(char opt[], float treshold, uint8_t unit) 
+double MP_LSM9DS1::getMagY() 
 {
-	treshold *= 100; //convert unit uT to gass
 	imu.readMag();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcMag(imu.my) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcMag(imu.my)> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcMag(imu.my) == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcMag(imu.my)< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcMag(imu.my) <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcMag(imu.my) != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return imu.calcMag(imu.my)/100.0 ;	
 }
 
-int MP_LSM9DS1::mag_z(char opt[], float treshold, uint8_t unit) 
+double MP_LSM9DS1::getMagZ() 
 {
-	treshold *= 100; //convert unit uT to gass
 	imu.readMag();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcMag(imu.mz) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcMag(imu.mz)> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcMag(imu.mz) == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcMag(imu.mz)< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcMag(imu.mz) <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcMag(imu.mz) != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return imu.calcMag(imu.mz)/100.0 ;	
 }
 
-int MP_LSM9DS1::rotate_x(char opt[], float treshold, uint8_t unit) 
+double MP_LSM9DS1::getRotateX() 
 {
 	imu.readGyro();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcGyro(imu.gx) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcGyro(imu.gx)> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcGyro(imu.gx)== treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcGyro(imu.gx)< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcGyro(imu.gx)<= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcGyro(imu.gx)!= treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+	return imu.calcGyro(imu.gx) ;	
 }
 
-int MP_LSM9DS1::rotate_y(char opt[], float treshold, uint8_t unit) 
+double MP_LSM9DS1::getRotateY() 
 {
 	imu.readGyro();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcGyro(imu.gy) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcGyro(imu.gy)> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcGyro(imu.gy) == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcGyro(imu.gy)< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcGyro(imu.gy) <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcGyro(imu.gy) != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return imu.calcGyro(imu.gy) ;	
 }
 
-int MP_LSM9DS1::rotate_z(char opt[], float treshold, uint8_t unit) 
+double MP_LSM9DS1::getRotateZ() 
 {
 	imu.readGyro();
-	if (!strcmp(opt, ">="))
-	{
-		if (imu.calcGyro(imu.gz) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (imu.calcGyro(imu.gz)> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (imu.calcGyro(imu.gz) == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (imu.calcGyro(imu.gz)< treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (imu.calcGyro(imu.gz) <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (imu.calcGyro(imu.gz) != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return imu.calcGyro(imu.gz) ;	
 }
 
-
-
- int MP_LSM9DS1::slop_x(char opt[], float treshold, uint8_t unit)  {}
- int MP_LSM9DS1::slop_y(char opt[], float treshold, uint8_t unit)  {}
- int MP_LSM9DS1::slop_z(char opt[], float treshold, uint8_t unit)  {}
+ int MP_LSM9DS1::getSlopX()  {}
+ int MP_LSM9DS1::getSlopY()  {}
+ int MP_LSM9DS1::getSlopZ()  {}
  int MP_LSM9DS1::tap() {}
  int MP_LSM9DS1::doubletap()  {}
  int MP_LSM9DS1::freefall()  {}

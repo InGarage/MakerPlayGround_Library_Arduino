@@ -4,8 +4,7 @@
 
 
 void MP_BME280::init()  
-{
-	
+{	
 	if (!bme.begin()) {
 		Serial.println("Could not find a valid BME280 sensor, check wiring!");
 		while (1);
@@ -13,191 +12,20 @@ void MP_BME280::init()
 
 }
 
-int MP_BME280::pressure(char opt[], float treshold, uint8_t unit) {
-	
-	if (!strcmp(opt, ">="))
-	{
-		if ((bme.readPressure() / 100.0F) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if ((bme.readPressure() / 100.0F) > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if ((bme.readPressure() / 100.0F) == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if ((bme.readPressure() / 100.0F) < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if ((bme.readPressure() / 100.0F) <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if ((bme.readPressure() / 100.0F) != treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+double MP_BME280::getPressure() {	
+	return bme.readPressure() / 100.0 ;	
 }
 
-int MP_BME280::attitude(char opt[], float treshold, uint8_t unit) {
-
-	if (!strcmp(opt, ">="))
-	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (bme.readAltitude(SEALEVELPRESSURE_HPA) != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+double MP_BME280::getAttitude() {
+	return bme.readAltitude(SEALEVELPRESSURE_HPA) ;
 }
 
-int MP_BME280::humidity(char opt[], float treshold, uint8_t unit) {
-
-	if (!strcmp(opt, ">="))
-	{
-		if (bme.readHumidity() >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (bme.readHumidity()> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (bme.readHumidity() == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (bme.readHumidity() < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (bme.readHumidity() <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (bme.readHumidity() != treshold)
-			return 1;
-		else
-			return 0;
-	}
+double MP_BME280::getHumidity() {
+	return bme.readHumidity() ;
 }
 
-int MP_BME280::checkTemp(char opt[], float treshold, uint8_t unit) {
-	if (!strcmp(opt, ">="))
-	{
-		if (bme.readTemperature() >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (bme.readTemperature()> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (bme.readTemperature() == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (bme.readTemperature() < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (bme.readTemperature() <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (bme.readTemperature() != treshold)
-			return 1;
-		else
-			return 0;
-	}
+double MP_BME280::getTemp() {
+	return bme.readTemperature() ;
 }
 
 

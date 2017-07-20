@@ -17,14 +17,14 @@ class MP_BME280 //: MP_Baro
 
 	 ~MP_BME280() {};
 
-	 int pressure(char opt[], float treshold, uint8_t unit)  ;
+/*	 int pressure(char opt[], float treshold, uint8_t unit)  ;
 	 int attitude(char opt[], float treshold, uint8_t unit)  ;
 	 int humidity(char opt[], float treshold, uint8_t unit)  ;
-	 int checkTemp(char opt[], float treshold, uint8_t unit) ;
-	 float getPressure() ;
-	 float getAttitude() ;
-	 float getHumidity() ;
-	 float getTemp();
+	 int checkTemp(char opt[], float treshold, uint8_t unit) ;*/
+	 double getPressure() ;
+	 double getAttitude() ;
+	 double getHumidity() ;
+	 double getTemp();
 	 void init() ;
 
   private:

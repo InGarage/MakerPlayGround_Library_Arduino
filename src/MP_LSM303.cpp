@@ -22,150 +22,22 @@ void MP_LSM303::init()
 }
 
 
-int MP_LSM303::accel_x(char opt[], float treshold, uint8_t unit) 
+double MP_LSM303::getAccelX()
 {
 	lsm.read();
-	
-	if (!strcmp(opt, ">="))
-	{
-		if (lsm.accelData.x >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (lsm.accelData.x > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (lsm.accelData.x == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (lsm.accelData.x < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (lsm.accelData.x <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (lsm.accelData.x != treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+	return lsm.accelData.x ;	
 }
-int MP_LSM303::accel_y(char opt[], float treshold, uint8_t unit) 
+
+double MP_LSM303::getAccelY()
 {
 	lsm.read();
-	if (!strcmp(opt, ">="))
-	{
-		if (lsm.accelData.y >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (lsm.accelData.y > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (lsm.accelData.y == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (lsm.accelData.y < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (lsm.accelData.y <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (lsm.accelData.y != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return lsm.accelData.y ;	
 }
-int MP_LSM303::accel_z(char opt[], float treshold, uint8_t unit) 
+
+double MP_LSM303::getAccelZ()
 {
 	lsm.read();
-	if (!strcmp(opt, ">="))
-	{
-		if (lsm.accelData.z >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (lsm.accelData.z > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (lsm.accelData.z == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (lsm.accelData.z < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (lsm.accelData.z <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (lsm.accelData.z != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return lsm.accelData.z ;	
 }
 
 
@@ -207,149 +79,19 @@ int MP_LSM303::compass(char opt[])
 
 }
 
-int MP_LSM303::mag_x(char opt[], float treshold, uint8_t unit) 
+double MP_LSM303::getMagX() 
 {
 	lsm.read();
-	if (!strcmp(opt, ">="))
-	{
-		if (lsm.magData.x >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (lsm.magData.x > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (lsm.magData.x == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (lsm.magData.x < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (lsm.magData.x <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (lsm.magData.x != treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+	return lsm.magData.x ;	
 }
-int MP_LSM303::mag_y(char opt[], float treshold, uint8_t unit) 
+
+double MP_LSM303::getMagY() 
 {
 	lsm.read();
-	if (!strcmp(opt, ">="))
-	{
-		if (lsm.magData.y >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (lsm.magData.y > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (lsm.magData.y == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (lsm.magData.y < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (lsm.magData.y <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (lsm.magData.y != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return lsm.magData.y ;	
 }
-int MP_LSM303::mag_z(char opt[], float treshold, uint8_t unit) 
+double MP_LSM303::getMagZ() 
 {
 	lsm.read();
-	if (!strcmp(opt, ">="))
-	{
-		if (lsm.magData.z >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (lsm.magData.z > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (lsm.magData.z == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (lsm.magData.z < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (lsm.magData.z <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (lsm.magData.z != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return lsm.magData.z ;	
 }
-
-

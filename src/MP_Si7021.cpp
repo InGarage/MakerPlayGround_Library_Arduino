@@ -13,102 +13,13 @@ void MP_Si7021::init()
 
 }
 
-int MP_Si7021::checkTemp(char opt[], float treshold, uint8_t unit) 
+double MP_Si7021::getTemp() 
 {
-
-	if (!strcmp(opt, ">="))
-	{
-		if (sensor.readTemperature() >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (sensor.readTemperature()> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (sensor.readTemperature() == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (sensor.readTemperature() < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (sensor.readTemperature() <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (sensor.readTemperature() != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
-
+	return sensor.readTemperature() ;
 }
 
 
-int MP_Si7021::humidity(char opt[], float treshold, uint8_t unit) 
+double MP_Si7021::getHumidity() 
 {
-
-	if (!strcmp(opt, ">="))
-	{
-		if (sensor.readHumidity() >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (sensor.readHumidity()> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (sensor.readHumidity() == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (sensor.readHumidity() < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (sensor.readHumidity() <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (sensor.readHumidity() != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return sensor.readHumidity() ;
 }

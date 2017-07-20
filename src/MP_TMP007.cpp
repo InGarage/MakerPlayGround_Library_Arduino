@@ -14,53 +14,9 @@ void MP_TMP007::init()
 }
 
 
-int MP_TMP007::checkTemp(char opt[], float treshold, uint8_t unit) 
+double MP_TMP007::getTemp() 
 {
-	
-	if (!strcmp(opt, ">="))
-	{
-		if (tmp007.readObjTempC() >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (tmp007.readObjTempC()> treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (tmp007.readObjTempC() == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (tmp007.readObjTempC() < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (tmp007.readObjTempC() <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (tmp007.readObjTempC() != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return tmp007.readObjTempC() ;
 }
 
 

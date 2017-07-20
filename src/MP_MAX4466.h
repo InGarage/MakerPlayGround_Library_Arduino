@@ -13,7 +13,7 @@ class MP_MAX4466 //: MP_Sound
 	 ~MP_MAX4466() {};
 
 	
-	 int checkVol(char opt[], float treshold)  ;
+	 double getVol()  ;
 	 void init() ;
 
   private:

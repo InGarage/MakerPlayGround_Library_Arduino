@@ -21,152 +21,23 @@ void MP_L3GD20::init()
   }
 }
 
-int MP_L3GD20::rotate_x(char opt[], float treshold, uint8_t unit) 
+double MP_L3GD20::getRotateX() 
 {
 	
 	gyro.getEvent(&event);
-
-	if (!strcmp(opt, ">="))
-	{
-		if (event.gyro.x * PI >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (event.gyro.x * PI > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (event.gyro.x * PI == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (event.gyro.x * PI < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (event.gyro.x * PI <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (event.gyro.x * PI != treshold)
-			return 1;
-		else
-			return 0;
-	}	
-	
-	
+	return event.gyro.x * PI ;	
 }
-int MP_L3GD20::rotate_y(char opt[], float treshold, uint8_t unit) 
+
+double MP_L3GD20::getRotateY() 
 {
+	
 	gyro.getEvent(&event);
-
-	if (!strcmp(opt, ">="))
-	{
-		if (event.gyro.y * PI >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (event.gyro.y * PI > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (event.gyro.y * PI == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (event.gyro.y * PI < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (event.gyro.y * PI <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (event.gyro.y * PI != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return event.gyro.y * PI ;	
 }
-int MP_L3GD20::rotate_z(char opt[], float treshold, uint8_t unit) 
+
+double MP_L3GD20::getRotateZ() 
 {
+	
 	gyro.getEvent(&event);
-	if (!strcmp(opt, ">="))
-	{
-		if (event.gyro.z * PI >= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, ">"))
-	{
-		if (event.gyro.z * PI > treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "="))
-	{
-		if (event.gyro.z * PI == treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<"))
-	{
-		if (event.gyro.z * PI < treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "<="))
-	{
-		if (event.gyro.z * PI <= treshold)
-			return 1;
-		else
-			return 0;
-	}
-	else if (!strcmp(opt, "!="))
-	{
-		if (event.gyro.z * PI != treshold)
-			return 1;
-		else
-			return 0;
-	}
-
-
+	return event.gyro.z * PI ;	
 }
-
-

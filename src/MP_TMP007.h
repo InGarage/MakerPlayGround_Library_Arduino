@@ -13,7 +13,7 @@ class MP_TMP007  //: MP_Temp
 	 ~MP_TMP007() {};
 
 	
-	 int checkTemp(char opt[], float treshold, uint8_t unit)  ;
+	 double getTemp()  ;
 	 void init() ;
 
   private:

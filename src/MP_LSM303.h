@@ -14,13 +14,13 @@ class MP_LSM303// : MP_Mag
   public:
 	 
 	 ~MP_LSM303() {};
-	 int accel_x(char opt[], float treshold, uint8_t unit)  ;
-	 int accel_y(char opt[], float treshold, uint8_t unit)  ;
-	 int accel_z(char opt[], float treshold, uint8_t unit) ;
+	 double getAccelX();
+	 double getAccelY();
+	 double getAccelZ();
 	 int compass(char opt[])  ;
-	 int mag_x(char opt[], float treshold, uint8_t unit)  ;
-	 int mag_y(char opt[], float treshold, uint8_t unit)  ;
-	 int mag_z(char opt[], float treshold, uint8_t unit) ;
+	 double getMagX();
+	 double getMagY();
+	 double getMagZ();
 	 void init() ;
 	
 
