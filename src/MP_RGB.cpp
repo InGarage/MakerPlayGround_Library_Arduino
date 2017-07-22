@@ -2,7 +2,7 @@
 
  MP_RGB::MP_RGB()
 {
-	tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
+  tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 }
 
 void MP_RGB::init() 
@@ -19,6 +19,57 @@ void MP_RGB::init()
     while (1); // halt!
   }
   
+}
+
+float MAX (float r, float g, float b)
+{
+  float temp = r;
+  if (g > temp)
+    temp = g;
+  else if (b > temp)
+    temp = b;
+  else
+    temp = r;
+  return temp;
+}
+
+float MIN (float r, float g, float b)
+{
+  float temp = r;
+  if (g < temp)
+    temp = g;
+  else if (b < temp)
+    temp = b;
+  else
+    temp = r;
+  return temp;
+}
+
+void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
+{
+  float min, max, delta;
+  min = MIN( r, g, b );
+  max = MAX( r, g, b );
+  *v = max;       // v
+  delta = max - min;
+
+  if( max != 0 )
+    *s = delta / max;   // s
+  else {
+    // r = g = b = 0    // s = 0, v is undefined
+    *s = 0;
+    *h = -1;
+    return;
+  }
+  if( r == max )
+    *h = ( g - b ) / delta;   // between yellow & magenta
+  else if( g == max )
+    *h = 2 + ( b - r ) / delta; // between cyan & yellow
+  else
+    *h = 4 + ( r - g ) / delta; // between magenta & cyan
+  *h *= 60;       // degrees
+  if( *h < 0 )
+    *h += 360;
 }
 
 
@@ -45,10 +96,20 @@ int MP_RGB::chk()
   r = red; r /= sum;
   g = green; g /= sum;
   b = blue; b /= sum;
-  r *= 256; g *= 256; b *= 256;
+ // r *= 256; g *= 256; b *= 256;
+  // Serial.print("\t");
+  // Serial.print((int)r, HEX); Serial.print((int)g, HEX); Serial.print((int)b, HEX);
+  // Serial.println();
+  
+  float h,s,v ;
+  RGBtoHSV(r,g,b,&h,&s,&v);
   Serial.print("\t");
-  Serial.print((int)r, HEX); Serial.print((int)g, HEX); Serial.print((int)b, HEX);
+  Serial.print(h); Serial.print("\t"); Serial.print(s*100);  Serial.print("\t"); Serial.print(v);
   Serial.println();
+
+
+
+
 }
 
 

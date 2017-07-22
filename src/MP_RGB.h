@@ -12,13 +12,13 @@ class MP_RGB //: MP_Button
   public:
 	 MP_RGB() ;
 	 ~MP_RGB() {};
-
+	 int chk();
 	  void init() ;
 	 
 
    private:
 	  Adafruit_TCS34725 tcs ;
-
+	  
 };
 
 #endif
