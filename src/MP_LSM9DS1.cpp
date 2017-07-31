@@ -10,14 +10,11 @@
 // http://www.ngdc.noaa.gov/geomag-web/#declination
 #define DECLINATION -8.58 // Declination (degrees) in Boulder, CO.
 
-
 MP_LSM9DS1::MP_LSM9DS1()
 {
-
 	imu.settings.device.commInterface = IMU_MODE_I2C;
 	imu.settings.device.mAddress = LSM9DS1_M;
 	imu.settings.device.agAddress = LSM9DS1_AG;
-
 }
 
 
@@ -44,21 +41,19 @@ void MP_LSM9DS1::init()
 
 }
 
-
-
-int MP_LSM9DS1::getAccelX() 
+double MP_LSM9DS1::getAccelX() 
 {
 	imu.readAccel();
 	return imu.calcAccel(imu.ax)*G ;	
 }
 
-int MP_LSM9DS1::getAccelY() 
+double MP_LSM9DS1::getAccelY() 
 {
 	imu.readAccel();
 	return imu.calcAccel(imu.ay)*G ;
 }
 
-int MP_LSM9DS1::getAccelZ() 
+double MP_LSM9DS1::getAccelZ() 
 {
 	imu.readAccel();
 	return imu.calcAccel(imu.az)*G ;
@@ -146,12 +141,9 @@ double MP_LSM9DS1::getRotateZ()
 	return imu.calcGyro(imu.gz) ;	
 }
 
- int MP_LSM9DS1::getSlopX()  {}
- int MP_LSM9DS1::getSlopY()  {}
- int MP_LSM9DS1::getSlopZ()  {}
- int MP_LSM9DS1::tap() {}
- int MP_LSM9DS1::doubletap()  {}
- int MP_LSM9DS1::freefall()  {}
-	
-
-
+double MP_LSM9DS1::getSlopX()  {}
+double MP_LSM9DS1::getSlopY()  {}
+double MP_LSM9DS1::getSlopZ()  {}
+int MP_LSM9DS1::tap() {}
+int MP_LSM9DS1::doubletap()  {}
+int MP_LSM9DS1::freefall()  {}

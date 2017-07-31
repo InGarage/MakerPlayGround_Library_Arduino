@@ -1,15 +1,12 @@
-#include "MP_RGB.h"
+#include "MP_Color.h"
 
- MP_RGB::MP_RGB()
+ MP_Color::MP_Color()
 {
   tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 }
 
-void MP_RGB::init() 
-
+void MP_Color::init() 
 {
-	
-  Serial.begin(9600);
   Serial.println("Color View Test!");
 
   if (tcs.begin()) {
@@ -18,7 +15,6 @@ void MP_RGB::init()
     Serial.println("No TCS34725 found ... check your connections");
     while (1); // halt!
   }
-  
 }
 
 float MAX (float r, float g, float b)
@@ -26,10 +22,8 @@ float MAX (float r, float g, float b)
   float temp = r;
   if (g > temp)
     temp = g;
-  else if (b > temp)
+  if (b > temp)
     temp = b;
-  else
-    temp = r;
   return temp;
 }
 
@@ -38,10 +32,8 @@ float MIN (float r, float g, float b)
   float temp = r;
   if (g < temp)
     temp = g;
-  else if (b < temp)
+  if (b < temp)
     temp = b;
-  else
-    temp = r;
   return temp;
 }
 
@@ -73,7 +65,7 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
 }
 
 
-int MP_RGB::chk() 
+int MP_Color::isColor(char color[]) 
 {
  uint16_t clear, red, green, blue;
 
@@ -104,12 +96,18 @@ int MP_RGB::chk()
   float h,s,v ;
   RGBtoHSV(r,g,b,&h,&s,&v);
   Serial.print("\t");
-  Serial.print(h); Serial.print("\t"); Serial.print(s*100);  Serial.print("\t"); Serial.print(v);
+  Serial.print(h); Serial.print("\t"); Serial.print(s*100);  Serial.print("\t"); Serial.print(v*100);
   Serial.println();
 
-
-
-
+  if (strcmp(color, "Red") == 0) {
+      return (h < 60 || h > 300);
+  } else if (strcmp(color, "Green") == 0) {
+      return (h < 180 && h > 60);
+  } else if (strcmp(color, "Blue") == 0) {
+      return (h < 320 && h > 180);
+  } else {
+    return 0;
+  }
 }
 
 

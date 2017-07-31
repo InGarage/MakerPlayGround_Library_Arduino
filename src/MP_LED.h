@@ -1,14 +1,14 @@
-#ifndef MP_GENERALLED_H
-#define MP_GENERALLED_H
+#ifndef MP_LED_H
+#define MP_LED_H
 
 //#include "MP_Led.h"
 #include <Arduino.h>
 
-class MP_GeneralLed //: MP_Led
+class MP_LED //: MP_Led
 {
   public:
-	MP_GeneralLed(uint8_t pin);
-	~MP_GeneralLed() {};
+	MP_LED(uint8_t pin);
+	~MP_LED() {};
 
 	void on(int a) ;
 	void off() ;

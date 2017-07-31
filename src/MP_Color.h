@@ -1,5 +1,5 @@
-#ifndef MP_RGB_H
-#define MP_RGB_H
+#ifndef MP_Color_H
+#define MP_Color_H
 #define commonAnode true
 
 //#include "MP_Button.h"
@@ -7,12 +7,12 @@
 #include <Wire.h>
 #include "Adafruit_TCS34725.h"
 
-class MP_RGB //: MP_Button
+class MP_Color //: MP_Button
 {
   public:
-	 MP_RGB() ;
-	 ~MP_RGB() {};
-	 int chk();
+	 MP_Color() ;
+	 ~MP_Color() {};
+	 int isColor(char color[]);
 	  void init() ;
 	 
 
