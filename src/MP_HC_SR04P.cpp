@@ -2,7 +2,7 @@
 #include "MP_HC_SR04P.h"
 
 
-MP_HC_SR04P::MP_HC_SR04P(uint8_t trig ,uint8_t echo)
+MP_HC_SR04P::MP_HC_SR04P(uint8_t echo ,uint8_t trig )
   : trig(trig) , echo(echo)
 {
   
@@ -17,7 +17,7 @@ void MP_HC_SR04P::init()
 
 double MP_HC_SR04P::getDistance() {	
 
-	  long cm ;
+	  long cm=0 ;
 	  /* loop for filter an hardware error */
       do{
 	      digitalWrite(trig, LOW);

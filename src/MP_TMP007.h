@@ -13,7 +13,7 @@ class MP_TMP007  //: MP_Temp
 	 ~MP_TMP007() {};
 
 	
-	 double getTemp()  ;
+	 double getTemperature()  ;
 	 void init() ;
 
   private:

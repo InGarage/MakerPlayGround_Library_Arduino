@@ -6,7 +6,8 @@ void MP_TMP007::init()
 {
 
 	
-	if (!tmp007.begin()) {
+	if (!tmp007.begin()) 
+	{
 		Serial.println("Could not find a valid TMP007 sensor, check wiring!");
 		while (1);
 	}
@@ -14,7 +15,7 @@ void MP_TMP007::init()
 }
 
 
-double MP_TMP007::getTemp() 
+double MP_TMP007::getTemperature() 
 {
 	return tmp007.readObjTempC() ;
 }

@@ -1,11 +1,13 @@
-#include "MP_Color.h"
+#include "MP_TCS34725.h"
 
- MP_Color::MP_Color()
+
+
+ MP_TCS34725::MP_TCS34725()
 {
   tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 }
 
-void MP_Color::init() 
+void MP_TCS34725::init() 
 {
   Serial.println("Color View Test!");
 
@@ -65,7 +67,7 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
 }
 
 
-int MP_Color::isColor(char color[]) 
+int MP_TCS34725::isColor(char color[]) 
 {
  uint16_t clear, red, green, blue;
 

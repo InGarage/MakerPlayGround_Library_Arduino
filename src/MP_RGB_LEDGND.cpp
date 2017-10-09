@@ -1,18 +1,18 @@
-#include "MP_RGB_LED.h"
+#include "MP_RGB_LEDGND.h"
 
-MP_RGB_LED::MP_RGB_LED(uint8_t r, uint8_t g, uint8_t b)
+MP_RGB_LEDGND::MP_RGB_LEDGND(uint8_t r, uint8_t g, uint8_t b)
     : r(r), g(g), b(b) 
 {
     
 }
 
-void MP_RGB_LED::init() {
+void MP_RGB_LEDGND::init() {
     pinMode(r, OUTPUT);
     pinMode(g, OUTPUT);
     pinMode(b, OUTPUT);
 }
 
-void MP_RGB_LED::on(char color[]) {
+void MP_RGB_LEDGND::on(char color[]) {
     if (strcmp(color, "Red") == 0) {
         digitalWrite(r, HIGH);
         digitalWrite(g, LOW);
@@ -40,7 +40,7 @@ void MP_RGB_LED::on(char color[]) {
     }
 }
 
-void MP_RGB_LED::off() {
+void MP_RGB_LEDGND::off() {
     digitalWrite(r, LOW);
     digitalWrite(g, LOW);
     digitalWrite(b, LOW);
