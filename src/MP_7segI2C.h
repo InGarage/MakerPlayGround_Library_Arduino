@@ -7,18 +7,19 @@
 class MP_7segI2C //: MP_Led
 {
   public:
-	MP_7segI2C(uint8_t sda,uint8_t sck);
-	~MP_7segI2C() {};
+	MP_7segI2C(uint8_t clk, uint8_t dio);
+	~MP_7segI2C(){};
+
+	void init();
 	void showValue(double value);
-	void showData(double data);
+	void showData(double value);
 	void setBrightness(char c[]);
-	void off() ;
-	void init() ;
+	void off();
 
-   private:
-   	int brightness;
-   	TM1637Display display;
-
+  private:
+	int data;
+	int brightness;
+	TM1637Display display;
 };
 
 #endif

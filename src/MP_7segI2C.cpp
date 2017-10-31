@@ -1,48 +1,38 @@
 #include "MP_7segI2C.h"
 
-MP_7segI2C::MP_7segI2C(uint8_t sda,uint8_t sck)
-  : display(TM1637Display ( sck,sda))//,sda(sda),sck(sck)
+MP_7segI2C::MP_7segI2C(uint8_t clk, uint8_t dio)
+	: display(TM1637Display(clk, dio)), data(0), brightness(7)
 {
-  
 }
 
-void MP_7segI2C::init() 
+void MP_7segI2C::init()
 {
-	Serial.begin(112500);
-	brightness = 7;
-
 }
 
 void MP_7segI2C::showValue(double value)
 {
-   display.setBrightness(brightness, true); // Turn on
-   display.showNumberDec((int)value, false);
-
-
-
+	data = value;
+	display.setBrightness(brightness, true);
+	display.showNumberDec((int) value);
 }
-void MP_7segI2C::showData(double data)
+
+void MP_7segI2C::showData(double value)
 {
-   display.setBrightness(brightness, true); // Turn on
-   display.showNumberDec((int)data, false);
+	data = value;
+	display.setBrightness(brightness, true);
+	display.showNumberDec((int) value);
 }
 
 void MP_7segI2C::setBrightness(char c[])
 {
-	brightness = (int)c[0]-49;
-	Serial.println(brightness);
-
+	brightness = (int) c[0] - '0';
+	display.setBrightness(brightness, true);
+	display.showNumberDec((int) data);
 }
-	
 
 void MP_7segI2C::off()
 {
-	uint8_t data[] = { 0x0, 0x0, 0x0, 0x0 };
-	display.setSegments(data); 
+	uint8_t data[] = {0x0, 0x0, 0x0, 0x0};
+	display.setBrightness(brightness, false);
+	display.setSegments(data);
 }
-	
-
-
-
-
-

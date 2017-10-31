@@ -1,29 +1,21 @@
 #include "MP_LED.h"
 
 MP_LED::MP_LED(uint8_t pin)
-  : pin(pin)
+    : pin(pin)
 {
-  
 }
 
-void MP_LED::init() 
+void MP_LED::init()
 {
-	pinMode(this->pin, OUTPUT);
+    pinMode(this->pin, OUTPUT);
 }
 
-
-void MP_LED::on(int a) 
+void MP_LED::on(int brightness)
 {
-  digitalWrite(this->pin, HIGH);
+    analogWrite(this->pin, map(brightness, 0, 100, 0, 255));
 }
 
-void MP_LED::off() 
+void MP_LED::off()
 {
-  digitalWrite(this->pin, LOW);
-}
-
-
-void MP_LED::dim(uint8_t percentage) 
-{
-	analogWrite(this->pin, 255 * percentage); /* Only PWM Pin */
+    digitalWrite(this->pin, LOW);
 }
