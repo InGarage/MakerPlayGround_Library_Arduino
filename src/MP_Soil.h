@@ -8,7 +8,7 @@ class MP_Soil//: MP_Led
   public:
 	MP_Soil(uint8_t pin);
 
-	double getHumid();
+	double getHumidity();
 	void init();
 
   private:
