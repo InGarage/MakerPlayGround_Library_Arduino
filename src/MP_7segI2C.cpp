@@ -13,7 +13,7 @@ void MP_7segI2C::showValue(double value)
 {
 	data = value;
 	display.setBrightness(brightness, true);
-	display.showNumberDec((int) value);
+	display.showFloat(value);
 }
 
 void MP_7segI2C::showData(double value)

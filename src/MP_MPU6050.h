@@ -7,26 +7,25 @@
 #include <Adafruit_Sensor.h>
 #include <MPU6050.h>
 
-
-
-class MP_MPU6050// : MP_Mag
+class MP_MPU6050 // : MP_Mag
 {
   public:
-	 
-	 ~MP_MPU6050() {};
-	 double getAccel_X();
-	 double getAccel_Y();
-	 double getAccel_Z();
-	 double getGyro_X();
-	 double getGyro_Y();
-	 double getGyro_Z();
-	 void init() ;
-	
+	~MP_MPU6050(){};
+
+	void init();
+
+	double getAccel_X();
+	double getAccel_Y();
+	double getAccel_Z();
+
+	double getGyro_X();
+	double getGyro_Y();
+	double getGyro_Z();
+
+	bool checkDirection(char opt[]);
 
   private:
-	  MPU6050 accelgyro;
-	 
-
+	MPU6050 accelgyro;
 };
 
 #endif

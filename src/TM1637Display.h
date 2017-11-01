@@ -73,6 +73,8 @@ public:
   //! @param pos The position most significant digit (0 - leftmost, 3 - rightmost)
   void showNumberDec(int num, bool leading_zero = false, uint8_t length = 4, uint8_t pos = 0);
 
+  void showFloat(float num);
+
   //! Displayes a decimal number, with dot control
   //!
   //! Dispalyes the given argument as a decimal number. The dots between the digits (or colon)

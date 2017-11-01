@@ -56,6 +56,7 @@ const uint8_t digitToSegment[] = {
   0b01110001     // F
   };
 
+const uint8_t invalid[] = {0b01000000, 0b01000000, 0b01000000, 0b01000000};
 
 TM1637Display::TM1637Display(uint8_t pinClk, uint8_t pinDIO)
 {
@@ -102,6 +103,35 @@ void TM1637Display::setSegments(const uint8_t segments[], uint8_t length, uint8_
 void TM1637Display::showNumberDec(int num, bool leading_zero, uint8_t length, uint8_t pos)
 {
   showNumberDecEx(num, 0, leading_zero, length, pos);
+}
+
+void TM1637Display::showFloat(float num)
+{
+  if (num >= 0) {
+    if (num < 10) {
+      showNumberDecEx(num * 1000, 0x80, true, 4, 0);
+    } else if (num < 100) {
+      showNumberDecEx(num * 100, 0x40, true, 4, 0);
+    } else if (num < 1000) {
+      showNumberDecEx(num * 10, 0x20, true, 4, 0);
+    } else if (num < 10000) {
+      showNumberDecEx(num, 0x10, true, 4, 0);
+    } else {
+      setSegments(invalid);
+    }
+  } else {
+    num = -num / 10.0;
+    setSegments(&invalid[0], 1, 0);   // write '-'
+    if (num < 1) {
+      showNumberDecEx(num * 1000, 0x40, true, 3, 1);
+    } else if (num < 10) {
+      showNumberDecEx(num * 100, 0x20, true, 3, 1);
+    } else if (num < 100) {
+      showNumberDecEx(num * 10, 0x10, true, 3, 1);
+    } else {
+      setSegments(invalid);
+    }
+  }
 }
 
 void TM1637Display::showNumberDecEx(int num, uint8_t dots, bool leading_zero,
