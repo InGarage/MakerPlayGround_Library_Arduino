@@ -17,6 +17,7 @@ class MP_MPU6050 // : MP_Mag
 	double getAccel_X();
 	double getAccel_Y();
 	double getAccel_Z();
+	double getAccel_AVG();
 
 	double getGyro_X();
 	double getGyro_Y();
