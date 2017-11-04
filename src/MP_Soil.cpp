@@ -11,10 +11,9 @@ void MP_Soil::init()
 	pinMode(this->pin,INPUT);
 }
 
-
 double MP_Soil::getHumidity() 
 {
-	return (analogRead(pin)/1023)*100;
+	return (analogRead(pin)/1023.0)*100.0;
 }
 
 
