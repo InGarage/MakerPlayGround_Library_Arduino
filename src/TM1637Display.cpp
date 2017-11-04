@@ -105,31 +105,50 @@ void TM1637Display::showNumberDec(int num, bool leading_zero, uint8_t length, ui
   showNumberDecEx(num, 0, leading_zero, length, pos);
 }
 
-void TM1637Display::showFloat(float num)
+void TM1637Display::showFloat(float num, bool fix2digit)
 {
-  if (num >= 0) {
-    if (num < 10) {
-      showNumberDecEx(num * 1000, 0x80, true, 4, 0);
-    } else if (num < 100) {
-      showNumberDecEx(num * 100, 0x40, true, 4, 0);
-    } else if (num < 1000) {
-      showNumberDecEx(num * 10, 0x20, true, 4, 0);
-    } else if (num < 10000) {
-      showNumberDecEx(num, 0x10, true, 4, 0);
-    } else {
+  if(fix2digit) {
+    if(num < -9.9999 || num >= 10000) {
       setSegments(invalid);
-    }
-  } else {
-    num = -num / 10.0;
-    setSegments(&invalid[0], 1, 0);   // write '-'
-    if (num < 1) {
-      showNumberDecEx(num * 1000, 0x40, true, 3, 1);
-    } else if (num < 10) {
+    } else if (num >= 0) { // positive number
+      if (num < 100) {
+        showNumberDecEx(num * 100, 0x40, true, 4, 0);
+      } else if (num < 1000) {
+        showNumberDecEx(num * 10, 0x20, true, 4, 0);
+      } else if (num < 10000) {
+        showNumberDecEx(num, 0x10, true, 4, 0);
+      }
+    } else { // negative number
+      num = -num;
+      setSegments(&invalid[0], 1, 0);   // write '-'
       showNumberDecEx(num * 100, 0x20, true, 3, 1);
-    } else if (num < 100) {
-      showNumberDecEx(num * 10, 0x10, true, 3, 1);
+    }
+  }
+  else {
+    if (num >= 0) {
+      if (num < 10) {
+        showNumberDecEx(num * 1000, 0x80, true, 4, 0);
+      } else if (num < 100) {
+        showNumberDecEx(num * 100, 0x40, true, 4, 0);
+      } else if (num < 1000) {
+        showNumberDecEx(num * 10, 0x20, true, 4, 0);
+      } else if (num < 10000) {
+        showNumberDecEx(num, 0x10, true, 4, 0);
+      } else {
+        setSegments(invalid);
+      }
     } else {
-      setSegments(invalid);
+      num = -num / 10.0;
+      setSegments(&invalid[0], 1, 0);   // write '-'
+      if (num < 1) {
+        showNumberDecEx(num * 1000, 0x40, true, 3, 1);
+      } else if (num < 10) {
+        showNumberDecEx(num * 100, 0x20, true, 3, 1);
+      } else if (num < 100) {
+        showNumberDecEx(num * 10, 0x10, true, 3, 1);
+      } else {
+        setSegments(invalid);
+      }
     }
   }
 }
