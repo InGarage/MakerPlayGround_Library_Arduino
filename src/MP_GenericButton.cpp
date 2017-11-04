@@ -26,7 +26,7 @@ boolean MP_GenericButton::isPressed()
 {
 	if (digitalRead(pin) == LOW)
 	{
-		delay(30);
+		delay(300);
 		return true;
 	}
 	return false;
