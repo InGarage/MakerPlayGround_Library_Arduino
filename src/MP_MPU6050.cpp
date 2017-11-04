@@ -19,7 +19,7 @@ void MP_MPU6050::init()
 }
 
 
-double MP_MPU6050::getAccel_AVG()
+double MP_MPU6050::getAccel_Magnitude()
 {
 	// the default range is +-2g and the sensor is 16 bits
 	double acc_x = (accelgyro.getAccelerationX() / 16384.0);
