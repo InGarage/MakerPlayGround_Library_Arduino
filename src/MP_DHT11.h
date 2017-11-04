@@ -13,7 +13,7 @@ class MP_DHT11 //: MP_Baro
   public:
 	 MP_DHT11(int pin);
 	 double getHumidity()  ;
-	 double getTemp()  ;
+	 double getTemperature()  ;
 	 void init() ;
 
   private:

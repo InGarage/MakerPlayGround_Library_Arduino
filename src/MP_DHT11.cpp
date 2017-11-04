@@ -15,7 +15,7 @@ void MP_DHT11::init()
 	sensor.begin();
 }
 
-double MP_DHT11::getTemp() 
+double MP_DHT11::getTemperature()
 {
 	return sensor.readTemperature() ;
 }
