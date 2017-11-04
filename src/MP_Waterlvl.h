@@ -1,24 +1,21 @@
 #ifndef MP_Waterlvl_H
 #define MP_Waterlvl_H
 
-//#include "MP_Button.h"
 #include <Arduino.h>
 
-
-
-class MP_Waterlvl//: MP_Button
+class MP_Waterlvl
 {
-  public:
-	 MP_Waterlvl(uint8_t pin) ;
-	 ~MP_Waterlvl() {};
+public:
+	MP_Waterlvl(uint8_t pin) ;
+	~MP_Waterlvl() {};
+    
+    void init();
 
-	  int isWet()  ;
-	  void init() ;
-	 
-
-   private:
-	  uint8_t pin;
-
+	bool isWet();
+	bool isDry();
+	
+private:
+	uint8_t pin;
 };
 
 #endif
