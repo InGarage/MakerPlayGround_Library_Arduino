@@ -9,6 +9,7 @@ class MP_HC_SR501 //: MP_Led
 	MP_HC_SR501(uint8_t pin);
 
 	int isDetected();
+	int isNotDetected();
 	void init();
 
   private:

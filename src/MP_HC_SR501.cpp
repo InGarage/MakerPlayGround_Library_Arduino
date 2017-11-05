@@ -14,5 +14,10 @@ void MP_HC_SR501::init()
 
 int MP_HC_SR501::isDetected() 
 {
-  return  digitalRead(pin) == HIGH; 
+  return  digitalRead(pin) == HIGH;
+}
+
+int MP_HC_SR501::isNotDetected()
+{
+  return  digitalRead(pin) == LOW;
 }
