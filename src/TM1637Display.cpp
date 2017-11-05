@@ -112,7 +112,7 @@ void TM1637Display::showFloat(float num, bool fix2digit)
       setSegments(invalid);
     } else if (num >= 0) { // positive number
       if (num < 100) {
-        showNumberDecEx(num * 100, 0x40, true, 4, 0);
+        showNumberDecEx(num * 100, 0x40, false, 4, 0);
       } else if (num < 1000) {
         showNumberDecEx(num * 10, 0x20, true, 4, 0);
       } else if (num < 10000) {
