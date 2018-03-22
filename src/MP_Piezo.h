@@ -1,13 +1,13 @@
-#ifndef MP_BUZZER_H
-#define MP_BUZZER_H
+#ifndef MP_PIEZO_H
+#define MP_PIEZO_H
 
 #include <Arduino.h>
 
-class MP_Buzzer
+class MP_Piezo
 {
   public:
-    MP_Buzzer(uint8_t pin);
-    ~MP_Buzzer(){};
+    MP_Piezo(uint8_t pin);
+    ~MP_Piezo(){};
 
     void init();
     void beep(double frequency);
