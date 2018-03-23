@@ -14,10 +14,18 @@ public:
     void update(unsigned long time);
 
     int readVirtualPin(uint8_t pin);   // pin = 0-7
-    void writeVirtualPin(uint8_t pin, int value);   // pin = 0-7
+    void writeVirtualPin(char pin[], int value);   // pin = 0-7
 
     // high level function use by maker playground
-    bool checkVirtualPinValue(uint8_t pin, int value);
+    bool checkVirtualPinValue(char pin[], int value);
+    int getVirtualPin0();
+    int getVirtualPin1();
+    int getVirtualPin2();
+    int getVirtualPin3();
+    int getVirtualPin4();
+    int getVirtualPin5();
+    int getVirtualPin6();
+    int getVirtualPin7();
 
     // TODO: find alternate implementation as these may be dangerous
     static int value[8];

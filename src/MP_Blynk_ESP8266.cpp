@@ -51,15 +51,55 @@ int MP_Blynk_ESP8266::readVirtualPin(uint8_t pin)
     return MP_Blynk_ESP8266::value[pin];
 }
 
-void MP_Blynk_ESP8266::writeVirtualPin(uint8_t pin, int value)
+void MP_Blynk_ESP8266::writeVirtualPin(char pin[], int value)
 {
-    MP_Blynk_ESP8266::value[pin] = value;
-    MP_Blynk_ESP8266::valueChanged |= (1 << pin);
+    MP_Blynk_ESP8266::value[pin[0] - '0'] = value;
+    MP_Blynk_ESP8266::valueChanged |= (1 << (pin[0] - '0'));
 }
 
-bool MP_Blynk_ESP8266::checkVirtualPinValue(uint8_t pin, int value)
+bool MP_Blynk_ESP8266::checkVirtualPinValue(char pin[], int value)
 {
-    return MP_Blynk_ESP8266::value[pin] == value;
+    return MP_Blynk_ESP8266::value[pin[0] - '0'] == value;
+}
+
+int MP_Blynk_ESP8266::getVirtualPin0()
+{
+    return this->readVirtualPin(0);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin1()
+{
+    return this->readVirtualPin(1);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin2()
+{
+    return this->readVirtualPin(2);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin3()
+{
+    return this->readVirtualPin(3);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin4()
+{
+    return this->readVirtualPin(4);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin5()
+{
+    return this->readVirtualPin(5);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin6()
+{
+    return this->readVirtualPin(6);
+}
+
+int MP_Blynk_ESP8266::getVirtualPin7()
+{
+    return this->readVirtualPin(7);
 }
 
 BLYNK_READ(V0) 
@@ -74,6 +114,42 @@ BLYNK_READ(V1)
     MP_Blynk_ESP8266::valueChanged &= ~_BV(1);
 }
 
+BLYNK_READ(V2) 
+{
+    Blynk.virtualWrite(2, MP_Blynk_ESP8266::value[2]);
+    MP_Blynk_ESP8266::valueChanged &= ~_BV(2);
+}
+
+BLYNK_READ(V3) 
+{
+    Blynk.virtualWrite(3, MP_Blynk_ESP8266::value[3]);
+    MP_Blynk_ESP8266::valueChanged &= ~_BV(3);
+}
+
+BLYNK_READ(V4) 
+{
+    Blynk.virtualWrite(4, MP_Blynk_ESP8266::value[4]);
+    MP_Blynk_ESP8266::valueChanged &= ~_BV(4);
+}
+
+BLYNK_READ(V5) 
+{
+    Blynk.virtualWrite(5, MP_Blynk_ESP8266::value[5]);
+    MP_Blynk_ESP8266::valueChanged &= ~_BV(5);
+}
+
+BLYNK_READ(V6) 
+{
+    Blynk.virtualWrite(6, MP_Blynk_ESP8266::value[6]);
+    MP_Blynk_ESP8266::valueChanged &= ~_BV(6);
+}
+
+BLYNK_READ(V7) 
+{
+    Blynk.virtualWrite(7, MP_Blynk_ESP8266::value[7]);
+    MP_Blynk_ESP8266::valueChanged &= ~_BV(7);
+}
+
 BLYNK_WRITE(V0) 
 {
     MP_Blynk_ESP8266::value[0] = param.asInt();
@@ -82,4 +158,34 @@ BLYNK_WRITE(V0)
 BLYNK_WRITE(V1) 
 {
     MP_Blynk_ESP8266::value[1] = param.asInt();
+}
+
+BLYNK_WRITE(V2) 
+{
+    MP_Blynk_ESP8266::value[2] = param.asInt();
+}
+
+BLYNK_WRITE(V3) 
+{
+    MP_Blynk_ESP8266::value[3] = param.asInt();
+}
+
+BLYNK_WRITE(V4) 
+{
+    MP_Blynk_ESP8266::value[4] = param.asInt();
+}
+
+BLYNK_WRITE(V5) 
+{
+    MP_Blynk_ESP8266::value[5] = param.asInt();
+}
+
+BLYNK_WRITE(V6) 
+{
+    MP_Blynk_ESP8266::value[6] = param.asInt();
+}
+
+BLYNK_WRITE(V7) 
+{
+    MP_Blynk_ESP8266::value[7] = param.asInt();
 }
