@@ -57,6 +57,7 @@ const uint8_t digitToSegment[] = {
   };
 
 const uint8_t invalid[] = {0b01000000, 0b01000000, 0b01000000, 0b01000000};
+const uint8_t off[] = {0b00000000, 0b00000000, 0b00000000, 0b00000000};
 
 TM1637Display::TM1637Display(uint8_t pinClk, uint8_t pinDIO)
 {
@@ -111,11 +112,17 @@ void TM1637Display::showFloat(float num, bool fix2digit)
     if(num < -9.9999 || num >= 10000) {
       setSegments(invalid);
     } else if (num >= 0) { // positive number
-      if (num < 100) {
+      if (num < 1) {
+        setSegments(&off[0], 1, 0);
+        showNumberDecEx(num * 100, 0x40, true, 3, 1);
+      }
+      else if (num < 100) {
         showNumberDecEx(num * 100, 0x40, false, 4, 0);
-      } else if (num < 1000) {
-        showNumberDecEx(num * 10, 0x20, true, 4, 0);
-      } else if (num < 10000) {
+      } 
+      // else if (num < 1000) {
+      //   showNumberDecEx(num * 10, 0x20, true, 4, 0);
+      // } 
+      else if (num < 10000) {
         showNumberDecEx(num, 0x10, true, 4, 0);
       }
     } else { // negative number
