@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-#include <Adafruit_Sensor.h>
+#include "Adafruit_Sensor.h"
 #include "Adafruit_ADXL345_U.h"
 
 class MP_GROVE_ADXL345 // : MP_Mag

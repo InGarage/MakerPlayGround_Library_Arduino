@@ -109,7 +109,7 @@ void TM1637Display::showNumberDec(int num, bool leading_zero, uint8_t length, ui
 void TM1637Display::showFloat(float num, bool fix2digit)
 {
   if(fix2digit) {
-    if(num < -9.9999 || num >= 10000) {
+    if(num < -999 || num >= 10000) {
       setSegments(invalid);
     } else if (num >= 0) { // positive number
       if (num < 1) {
@@ -123,12 +123,23 @@ void TM1637Display::showFloat(float num, bool fix2digit)
       //   showNumberDecEx(num * 10, 0x20, true, 4, 0);
       // } 
       else if (num < 10000) {
-        showNumberDecEx(num, 0x10, true, 4, 0);
+        showNumberDecEx(num, 0x10, false, 4, 0);
       }
     } else { // negative number
       num = -num;
-      setSegments(&invalid[0], 1, 0);   // write '-'
-      showNumberDecEx(num * 100, 0x20, true, 3, 1);
+      if (num >= 100) {
+        setSegments(invalid, 1, 0);   // write '-'
+        showNumberDecEx(num, 0x10, true, 3, 1);
+      }
+      else if (num >= 10) {
+        setSegments(off, 1, 0);   // write space
+        setSegments(invalid, 1, 1);   // write '-'
+        showNumberDecEx(num, 0x10, true, 2, 2);
+      }
+      else {
+        setSegments(invalid, 1, 0);   // write '-'
+        showNumberDecEx(num * 100, 0x40, true, 3, 1);
+      }
     }
   }
   else {

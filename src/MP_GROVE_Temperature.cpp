@@ -15,7 +15,7 @@ void MP_GROVE_Temperature::init()
 double MP_GROVE_Temperature::getTemperature() 
 {
 	// return -40 + (analogRead(pin)/1023.0) * (125 - (-40));
-    return analogRead(pin)/1023.0) * 165 - 40;
+    return analogRead(pin)/1023.0 * 125 - 40;
 }
 
 
