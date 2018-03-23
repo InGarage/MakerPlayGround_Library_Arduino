@@ -40,9 +40,10 @@ void MP_Blynk_ESP8266::update(unsigned long time)
             if (MP_Blynk_ESP8266::valueChanged & (1 << i)) 
             {
                 Blynk.virtualWrite(i, MP_Blynk_ESP8266::value[i]);
-                MP_Blynk_ESP8266::valueChanged &= (1 << i);
+                MP_Blynk_ESP8266::valueChanged &= ~(1 << i);
             }
         }
+        lastSendMillis = time;
     }
 }
 
