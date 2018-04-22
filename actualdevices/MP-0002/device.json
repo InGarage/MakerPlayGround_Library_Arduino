@@ -21,7 +21,7 @@
       ]
     }
   ],
-  "portInstances": {
+  "portInstancesMap": {
     "MP_I2C": [
       {
         "name": "",
@@ -59,7 +59,7 @@
       }
     ]
   },
-  "listGenericDeviceCompatible": [
+  "GenericDeviceCompatibleList": [
     {
       "generic_device": "RGB LED",
       "actionList": [
@@ -85,7 +85,7 @@
       ]
     }
   ],
-  "platformLibraries": {
+  "platformLibrariesMap": {
     "ARDUINO": []
   }
 }

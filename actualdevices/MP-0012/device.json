@@ -21,7 +21,7 @@
       ]
     }
   ],
-  "portInstances": {
+  "portInstancesMap": {
     "MP_GPIO": [
       {
         "name": "",
@@ -59,7 +59,7 @@
       }
     ]
   },
-  "listGenericDeviceCompatible": [
+  "GenericDeviceCompatibleList": [
     {
       "generic_device": "7 Segment",
       "actionList": [
@@ -79,7 +79,7 @@
       ]
     }
   ],
-  "platformLibraries": {
+  "platformLibrariesMap": {
     "ARDUINO": []
   }
 }
