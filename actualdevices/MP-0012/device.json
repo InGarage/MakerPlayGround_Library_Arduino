@@ -59,7 +59,7 @@
       }
     ]
   },
-  "GenericDeviceCompatibleList": [
+  "genericDeviceCompatibleList": [
     {
       "generic_device": "7 Segment",
       "actionList": [

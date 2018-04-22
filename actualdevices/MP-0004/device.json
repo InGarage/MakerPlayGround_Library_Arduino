@@ -108,7 +108,7 @@
       }
     ]
   },
-  "GenericDeviceCompatibleList": [],
+  "genericDeviceCompatibleList": [],
   "platformLibrariesMap": {
     "ARDUINO": []
   }

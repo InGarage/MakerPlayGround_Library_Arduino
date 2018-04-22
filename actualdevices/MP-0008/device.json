@@ -59,7 +59,7 @@
       }
     ]
   },
-  "GenericDeviceCompatibleList": [
+  "genericDeviceCompatibleList": [
     {
       "generic_device": "Accelerometer",
       "conditionList": [

@@ -52,7 +52,7 @@
       }
     ]
   },
-  "GenericDeviceCompatibleList": [
+  "genericDeviceCompatibleList": [
     {
       "generic_device": "Moisture",
       "conditionList": [
