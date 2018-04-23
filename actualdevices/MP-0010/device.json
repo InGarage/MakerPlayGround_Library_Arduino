@@ -75,7 +75,7 @@
       "generic_device": "Gesture",
       "conditionList": [
         {
-          "name": "Detect Hand",
+          "name": "Detect Swipe",
           "parameterList": [
             {
               "name": "Gesture",
