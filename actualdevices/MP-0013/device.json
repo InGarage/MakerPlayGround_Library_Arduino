@@ -57,8 +57,12 @@
       "generic_device": "Relay Module",
       "actionList": [
         {
-          "action": "Off",
-          "params": []
+          "name": "On",
+          "parameterList": []
+        },
+        {
+          "name": "Off",
+          "parameterList": []
         }
       ]
     }

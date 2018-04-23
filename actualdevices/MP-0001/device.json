@@ -57,8 +57,21 @@
       "generic_device": "LED",
       "actionList": [
         {
-          "action": "Off",
-          "params": []
+          "name": "On",
+          "parameterList": [
+            {
+              "name": "Brightness",
+              "type": "DOUBLE",
+              "minNumberValue": 0.0,
+              "maxNumberValue": 100.0,
+              "defaultNumberValue": 100.0,
+              "numberUnit": "PERCENT"
+            }
+          ]
+        },
+        {
+          "name": "Off",
+          "parameterList": []
         }
       ]
     }

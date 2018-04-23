@@ -64,8 +64,8 @@
       "generic_device": "RGB LED",
       "actionList": [
         {
-          "action": "On",
-          "params": [
+          "name": "On",
+          "parameterList": [
             {
               "name": "Color",
               "type": "ENUM",
