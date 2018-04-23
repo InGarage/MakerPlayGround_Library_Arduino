@@ -57,12 +57,12 @@
       "generic_device": "Button",
       "conditionList": [
         {
-          "condition": "Wait For Press",
-          "params": []
+          "name": "Wait For Press",
+          "parameterList": []
         },
         {
-          "condition": "Wait For Release",
-          "params": []
+          "name": "Wait For Release",
+          "parameterList": []
         }
       ]
     }

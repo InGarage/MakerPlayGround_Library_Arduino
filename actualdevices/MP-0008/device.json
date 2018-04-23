@@ -64,11 +64,32 @@
       "generic_device": "Accelerometer",
       "conditionList": [
         {
-          "condition": "Compare",
-          "params": []
+          "name": "Compare",
+          "parameterList": []
         }
       ],
       "sensibleValueList": [
+        {
+          "name": "Accel_X",
+          "type": "DOUBLE",
+          "minValue": -100.0,
+          "maxValue": 100.0,
+          "unit": "METERPERSECSQUARE"
+        },
+        {
+          "name": "Accel_Y",
+          "type": "DOUBLE",
+          "minValue": -100.0,
+          "maxValue": 100.0,
+          "unit": "METERPERSECSQUARE"
+        },
+        {
+          "name": "Accel_Z",
+          "type": "DOUBLE",
+          "minValue": -100.0,
+          "maxValue": 100.0,
+          "unit": "METERPERSECSQUARE"
+        },
         {
           "name": "Accel_Magnitude",
           "type": "DOUBLE",
@@ -82,11 +103,25 @@
       "generic_device": "Gyroscope",
       "conditionList": [
         {
-          "condition": "Compare",
-          "params": []
+          "name": "Compare",
+          "parameterList": []
         }
       ],
       "sensibleValueList": [
+        {
+          "name": "Gyro_X",
+          "type": "DOUBLE",
+          "minValue": -200.0,
+          "maxValue": 200.0,
+          "unit": "RADIUSPERSEC"
+        },
+        {
+          "name": "Gyro_Y",
+          "type": "DOUBLE",
+          "minValue": -200.0,
+          "maxValue": 200.0,
+          "unit": "RADIUSPERSEC"
+        },
         {
           "name": "Gyro_Z",
           "type": "DOUBLE",

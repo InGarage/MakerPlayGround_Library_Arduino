@@ -57,16 +57,16 @@
       "generic_device": "Moisture",
       "conditionList": [
         {
-          "condition": "In dry soil",
-          "params": []
+          "name": "In dry soil",
+          "parameterList": []
         },
         {
-          "condition": "In humid soil",
-          "params": []
+          "name": "In humid soil",
+          "parameterList": []
         },
         {
-          "condition": "In water",
-          "params": []
+          "name": "In water",
+          "parameterList": []
         }
       ]
     }
