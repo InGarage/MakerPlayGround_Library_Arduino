@@ -596,7 +596,140 @@
       }
     ]
   },
-  "genericDeviceCompatibleList": [],
+  "genericDeviceCompatibleList": [
+    {
+      "generic_device": "Blynk",
+      "conditionList": [
+        {
+          "name": "Compare",
+          "parameterList": []
+        },
+        {
+          "name": "Check value",
+          "parameterList": [
+            {
+              "name": "Virtual Pin",
+              "type": "ENUM",
+              "possibleEnumValues": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7"
+              ],
+              "defaultEnumValue": "0"
+            },
+            {
+              "name": "Data",
+              "type": "INTEGER",
+              "minNumberValue": -32768,
+              "maxNumberValue": 32767,
+              "defaultNumberValue": 0,
+              "numberUnit": "NOT_SPECIFIED"
+            }
+          ]
+        }
+      ],
+      "actionList": [
+        {
+          "name": "Push value",
+          "parameterList": [
+            {
+              "name": "Virtual Pin",
+              "type": "ENUM",
+              "possibleEnumValues": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7"
+              ],
+              "defaultEnumValue": "0"
+            },
+            {
+              "name": "Virtual Pin",
+              "type": "ENUM",
+              "possibleEnumValues": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7"
+              ],
+              "defaultEnumValue": "0"
+            }
+          ]
+        }
+      ],
+      "sensibleValueList": [
+        {
+          "name": "VirtualPin0",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin1",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin2",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin3",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin4",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin5",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin6",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        },
+        {
+          "name": "VirtualPin7",
+          "type": "INTEGER",
+          "minValue": 0.0,
+          "maxValue": 255.0,
+          "unit": "NOT_SPECIFIED"
+        }
+      ]
+    }
+  ],
   "platformLibrariesMap": {
     "ARDUINO": []
   }
