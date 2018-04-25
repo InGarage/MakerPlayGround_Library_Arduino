@@ -71,28 +71,28 @@
       ],
       "sensibleValueList": [
         {
-          "name": "X",
+          "name": "Accel_X",
           "type": "DOUBLE",
           "minValue": -16.0,
           "maxValue": 16.0,
           "unit": "METERPERSECSQUARE"
         },
         {
-          "name": "Y",
+          "name": "Accel_Y",
           "type": "DOUBLE",
           "minValue": -16.0,
           "maxValue": 16.0,
           "unit": "METERPERSECSQUARE"
         },
         {
-          "name": "Z",
+          "name": "Accel_Z",
           "type": "DOUBLE",
           "minValue": -16.0,
           "maxValue": 16.0,
           "unit": "METERPERSECSQUARE"
         },
         {
-          "name": "Magnitude",
+          "name": "Accel_Magnitude",
           "type": "DOUBLE",
           "minValue": 0.0,
           "maxValue": 60.0,
