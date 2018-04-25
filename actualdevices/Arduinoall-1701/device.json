@@ -30,7 +30,7 @@
         "pinList": [
           {
             "name": "GPIO",
-            "function": "INOUT",
+            "function": "GPIO",
             "x": 194.0,
             "y": 54.4,
             "adapt_pin": "USE_BLOCK"
