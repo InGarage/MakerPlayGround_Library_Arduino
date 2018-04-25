@@ -75,7 +75,7 @@
       ],
       "sensibleValueList": [
         {
-          "name": "Sound Level",
+          "name": "SoundLevel",
           "type": "DOUBLE",
           "minValue": -40.0,
           "maxValue": 50.0,
