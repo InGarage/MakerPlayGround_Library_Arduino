@@ -5,6 +5,7 @@
   "url": "http://www.makerplayground.io/library/MP-0000",
   "type": "CONTROLLER",
   "formfactor": "MAKER_PLAYGROUND",
+  "pioId": "uno",
   "width": 0.0,
   "height": 0.0,
   "hostConnectionsList": [],
