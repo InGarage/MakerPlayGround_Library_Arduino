@@ -108,7 +108,21 @@
       }
     ]
   },
-  "genericDeviceCompatibleList": [],
+  "genericDeviceCompatibleList": [
+    {
+      "generic_device": "Load Driver",
+      "actionList": [
+        {
+          "name": "On",
+          "parameterList": []
+        },
+        {
+          "name": "Off",
+          "parameterList": []
+        }
+      ]
+    }
+  ],
   "platformLibrariesMap": {
     "ARDUINO": []
   }
