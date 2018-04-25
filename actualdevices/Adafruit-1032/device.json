@@ -149,25 +149,25 @@
       ],
       "sensibleValueList": [
         {
-          "name": "X",
+          "name": "Gyro_X",
           "type": "DOUBLE",
           "minValue": -2000.0,
           "maxValue": 2000.0,
-          "unit": "DEGREEPERSEC"
+          "unit": "RADIUSPERSEC"
         },
         {
-          "name": "Y",
+          "name": "Gyro_Y",
           "type": "DOUBLE",
           "minValue": -2000.0,
           "maxValue": 2000.0,
-          "unit": "DEGREEPERSEC"
+          "unit": "RADIUSPERSEC"
         },
         {
-          "name": "Z",
+          "name": "Gyro_Z",
           "type": "DOUBLE",
           "minValue": -2000.0,
           "maxValue": 2000.0,
-          "unit": "DEGREEPERSEC"
+          "unit": "RADIUSPERSEC"
         }
       ]
     }
