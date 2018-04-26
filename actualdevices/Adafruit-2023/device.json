@@ -34,7 +34,29 @@
     }
   ],
   "portInstancesMap": {
-    "POWER": [
+    "POWER5V": [
+      {
+        "name": "",
+        "wiring": "WIRE",
+        "pinList": [
+          {
+            "name": "VCC",
+            "function": "VCC_5V",
+            "x": 14.5,
+            "y": 101.5,
+            "adapt_pin": "USE"
+          },
+          {
+            "name": "GND",
+            "function": "GND",
+            "x": 28.9,
+            "y": 101.5,
+            "adapt_pin": "USE"
+          }
+        ]
+      }
+    ],
+    "POWER3V": [
       {
         "name": "",
         "wiring": "WIRE",
