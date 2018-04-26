@@ -15,7 +15,7 @@
       ],
       "connectivityList": [
         {
-          "GROVE_GPIO": [
+          "GROVE_PWM": [
             0
           ]
         }
