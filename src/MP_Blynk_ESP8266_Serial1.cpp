@@ -8,7 +8,7 @@
 int MP_Blynk_ESP8266_Serial1::value[8];
 uint8_t MP_Blynk_ESP8266_Serial1::valueChanged;
 
-MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(uint8_t rx, uint8_t tx, char* auth, char* ssid, char* pass)
+MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(char* auth, char* ssid, char* pass)
     : wifi(&Serial1)
     , auth(auth)
     , ssid(ssid)
