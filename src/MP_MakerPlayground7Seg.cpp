@@ -2,8 +2,8 @@
 
 uint8_t digits[] = {0b00111111, 0b00000110, 0b01011011, 0b01001111, 0b01100110, 0b01101101, 0b01111101, 0b00000111, 0b01111111, 0b01101111};
 
-MP_MakerPlayground7Seg::MP_MakerPlayground7Seg(uint8_t pin) 
-    : serial(SendOnlySoftwareSerial(pin))
+MP_MakerPlayground7Seg::MP_MakerPlayground7Seg(uint8_t tx, uint8_t rx) 
+    : serial(SoftwareSerial(rx, tx))
 {
 }
 
@@ -23,39 +23,39 @@ void MP_MakerPlayground7Seg::sendData(int num, uint8_t dot, bool negative)
     }
 
     // send
-    serial.print((byte)0x7f);
-    serial.print((byte)3);
+    serial.write((byte)0x7f);
+    serial.write((byte)3);
     if (negative) {
-        serial.print((byte)0b01000000);
+        serial.write((byte)0b01000000);
         for (int i=2; i>=0; i--) 
         {
             if (dot && (1 << i))
-                serial.print((byte)(digits[tmp[i]] | 0b10000000));
+                serial.write((byte)(digits[tmp[i]] | 0b10000000));
             else
-                serial.print((byte)(digits[tmp[i]]));
+                serial.write((byte)(digits[tmp[i]]));
         }
     } else {
         for (int i=3; i>=0; i--) 
         {
             if (dot && (1 << i))
-                serial.print((byte)(digits[tmp[i]] | 0b10000000));
+                serial.write((byte)(digits[tmp[i]] | 0b10000000));
             else
-                serial.print((byte)(digits[tmp[i]]));
+                serial.write((byte)(digits[tmp[i]]));
         }
     }
-    serial.print((byte)0);
+    serial.write((byte)0);
 }
 
 void MP_MakerPlayground7Seg::sendInvalid()
 {
-    serial.print((byte)0x7f);
-    serial.print((byte)3);
-    serial.print((byte)0b01000000);
-    serial.print((byte)0b01000000);
-    serial.print((byte)0b01000000);
-    serial.print((byte)0b01000000);
-    serial.print((byte)0b00000000);
-    serial.print((byte)0);
+    serial.write((byte)0x7f);
+    serial.write((byte)3);
+    serial.write((byte)0b01000000);
+    serial.write((byte)0b01000000);
+    serial.write((byte)0b01000000);
+    serial.write((byte)0b01000000);
+    serial.write((byte)0b00000000);
+    serial.write((byte)0);
 }
 
 void MP_MakerPlayground7Seg::showFloat(double num)
@@ -98,12 +98,12 @@ void MP_MakerPlayground7Seg::showData(double value)
 
 void MP_MakerPlayground7Seg::off()
 {
-    serial.print((byte)0x7f);
-    serial.print((byte)0);
-    serial.print((byte)0b00000000);
-    serial.print((byte)0b00000000);
-    serial.print((byte)0b00000000);
-    serial.print((byte)0b00000000);
-    serial.print((byte)0b00000000);
-    serial.print((byte)0);
+    serial.write((byte)0x7f);
+    serial.write((byte)0);
+    serial.write((byte)0b00000000);
+    serial.write((byte)0b00000000);
+    serial.write((byte)0b00000000);
+    serial.write((byte)0b00000000);
+    serial.write((byte)0b00000000);
+    serial.write((byte)0);
 }
