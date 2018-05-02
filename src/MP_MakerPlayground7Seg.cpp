@@ -2,8 +2,8 @@
 
 uint8_t digits[] = {0b00111111, 0b00000110, 0b01011011, 0b01001111, 0b01100110, 0b01101101, 0b01111101, 0b00000111, 0b01111111, 0b01101111};
 
-MP_MakerPlayground7Seg::MP_MakerPlayground7Seg(uint8_t pin) 
-    : serial(SendOnlySoftwareSerial(pin))
+MP_MakerPlayground7Seg::MP_MakerPlayground7Seg(uint8_t tx, uint8_t rx) 
+    : serial(SoftwareSerial(rx, tx))
 {
 }
 
