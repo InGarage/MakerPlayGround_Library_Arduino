@@ -29,7 +29,7 @@ void MP_MakerPlayground7Seg::sendData(int num, uint8_t dot, bool negative)
         serial.write((byte)0b01000000);
         for (int i=2; i>=0; i--) 
         {
-            if (dot && (1 << i))
+            if (dot & (1 << i))
                 serial.write((byte)(digits[tmp[i]] | 0b10000000));
             else
                 serial.write((byte)(digits[tmp[i]]));
@@ -37,7 +37,7 @@ void MP_MakerPlayground7Seg::sendData(int num, uint8_t dot, bool negative)
     } else {
         for (int i=3; i>=0; i--) 
         {
-            if (dot && (1 << i))
+            if (dot & (1 << i))
                 serial.write((byte)(digits[tmp[i]] | 0b10000000));
             else
                 serial.write((byte)(digits[tmp[i]]));
