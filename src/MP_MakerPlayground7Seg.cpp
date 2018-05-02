@@ -23,39 +23,39 @@ void MP_MakerPlayground7Seg::sendData(int num, uint8_t dot, bool negative)
     }
 
     // send
-    serial.write(0x7f);
-    serial.write(3);
+    serial.print(0x7f);
+    serial.print(3);
     if (negative) {
-        serial.write(0b01000000);
+        serial.print(0b01000000);
         for (int i=2; i>=0; i--) 
         {
             if (dot && (1 << i))
-                serial.write(tmp[i] | 0b10000000);
+                serial.print(tmp[i] | 0b10000000);
             else
-                serial.write(tmp[i]);
+                serial.print(tmp[i]);
         }
     } else {
         for (int i=3; i>=0; i--) 
         {
             if (dot && (1 << i))
-                serial.write(tmp[i] | 0b10000000);
+                serial.print(tmp[i] | 0b10000000);
             else
-                serial.write(tmp[i]);
+                serial.print(tmp[i]);
         }
     }
-    serial.write(0);
+    serial.print(0);
 }
 
 void MP_MakerPlayground7Seg::sendInvalid()
 {
-    serial.write(0x7f);
-    serial.write(3);
-    serial.write(0b01000000);
-    serial.write(0b01000000);
-    serial.write(0b01000000);
-    serial.write(0b01000000);
-    serial.write(0b00000000);
-    serial.write(0);
+    serial.print(0x7f);
+    serial.print(3);
+    serial.print(0b01000000);
+    serial.print(0b01000000);
+    serial.print(0b01000000);
+    serial.print(0b01000000);
+    serial.print(0b00000000);
+    serial.print(0);
 }
 
 void MP_MakerPlayground7Seg::showFloat(double num)
@@ -98,12 +98,12 @@ void MP_MakerPlayground7Seg::showData(double value)
 
 void MP_MakerPlayground7Seg::off()
 {
-    serial.write(0x7f);
-    serial.write(0);
-    serial.write(0b00000000);
-    serial.write(0b00000000);
-    serial.write(0b00000000);
-    serial.write(0b00000000);
-    serial.write(0b00000000);
-    serial.write(0);
+    serial.print(0x7f);
+    serial.print(0);
+    serial.print(0b00000000);
+    serial.print(0b00000000);
+    serial.print(0b00000000);
+    serial.print(0b00000000);
+    serial.print(0b00000000);
+    serial.print(0);
 }
