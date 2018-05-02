@@ -15,6 +15,7 @@ public:
 	void off();
 
 private:
+	void sendInvalid();
     void showFloat(double num);
     void sendData(int num, uint8_t dot);
 
