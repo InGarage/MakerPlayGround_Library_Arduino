@@ -17,7 +17,7 @@ public:
 private:
 	void sendInvalid();
     void showFloat(double num);
-    void sendData(int num, uint8_t dot);
+    void sendData(int num, uint8_t dot, bool negative);
 
 	SendOnlySoftwareSerial serial;
 };
