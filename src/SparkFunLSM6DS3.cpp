@@ -30,7 +30,6 @@ Distributed as-is; no warranty is given.
 #include "stdint.h"
 
 #include "Wire.h"
-#include "SPI.h"
 
 //****************************************************************************//
 //
@@ -72,32 +71,6 @@ status_t LSM6DS3Core::beginCore(void)
 		Wire.begin();
 		break;
 
-	case SPI_MODE:
-		// start the SPI library:
-		SPI.begin();
-		// Maximum SPI frequency is 10MHz, could divide by 2 here:
-		SPI.setClockDivider(SPI_CLOCK_DIV4);
-		// Data is read and written MSb first.
-		SPI.setBitOrder(MSBFIRST);
-		// Data is captured on rising edge of clock (CPHA = 0)
-		// Base value of the clock is HIGH (CPOL = 1)
-
-		// MODE3 for 328p operation
-#ifdef __AVR__
-		SPI.setDataMode(SPI_MODE3);
-#else
-#endif
-
-		// MODE0 for Teensy 3.1 operation
-#ifdef __MK20DX256__
-		SPI.setDataMode(SPI_MODE0);
-#else
-#endif
-		
-		// initalize the  data ready and chip select pins:
-		pinMode(chipSelectPin, OUTPUT);
-		digitalWrite(chipSelectPin, HIGH);
-		break;
 	default:
 		break;
 	}
@@ -168,32 +141,6 @@ status_t LSM6DS3Core::readRegisterRegion(uint8_t *outputPointer , uint8_t offset
 		}
 		break;
 
-	case SPI_MODE:
-		// take the chip select low to select the device:
-		digitalWrite(chipSelectPin, LOW);
-		// send the device the register you want to read:
-		SPI.transfer(offset | 0x80);  //Ored with "read request" bit
-		while ( i < length ) // slave may send less than requested
-		{
-			c = SPI.transfer(0x00); // receive a byte as character
-			if( c == 0xFF )
-			{
-				//May have problem
-				tempFFCounter++;
-			}
-			*outputPointer = c;
-			outputPointer++;
-			i++;
-		}
-		if( tempFFCounter == i )
-		{
-			//Ok, we've recieved all ones, report
-			returnError = IMU_ALL_ONES_WARNING;
-		}
-		// take the chip select high to de-select:
-		digitalWrite(chipSelectPin, HIGH);
-		break;
-
 	default:
 		break;
 	}
@@ -229,23 +176,6 @@ status_t LSM6DS3Core::readRegister(uint8_t* outputPointer, uint8_t offset) {
 		while ( Wire.available() ) // slave may send less than requested
 		{
 			result = Wire.read(); // receive a byte as a proper uint8_t
-		}
-		break;
-
-	case SPI_MODE:
-		// take the chip select low to select the device:
-		digitalWrite(chipSelectPin, LOW);
-		// send the device the register you want to read:
-		SPI.transfer(offset | 0x80);  //Ored with "read request" bit
-		// send a value of 0 to read the first byte returned:
-		result = SPI.transfer(0x00);
-		// take the chip select high to de-select:
-		digitalWrite(chipSelectPin, HIGH);
-		
-		if( result == 0xFF )
-		{
-			//we've recieved all ones, report
-			returnError = IMU_ALL_ONES_WARNING;
 		}
 		break;
 
@@ -298,20 +228,6 @@ status_t LSM6DS3Core::writeRegister(uint8_t offset, uint8_t dataToWrite) {
 			returnError = IMU_HW_ERROR;
 		}
 		break;
-
-	case SPI_MODE:
-		// take the chip select low to select the device:
-		digitalWrite(chipSelectPin, LOW);
-		// send the device the register you want to read:
-		SPI.transfer(offset);
-		// send a value of 0 to read the first byte returned:
-		SPI.transfer(dataToWrite);
-		// decrement the number of bytes left to read:
-		// take the chip select high to de-select:
-		digitalWrite(chipSelectPin, HIGH);
-		break;
-		
-		//No way to check error on this write (Except to read back but that's not reliable)
 
 	default:
 		break;
