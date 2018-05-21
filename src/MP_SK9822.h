@@ -2,7 +2,6 @@
 #define MP_SK9822_H
 
 #include <Arduino.h>
-#include "APA102.h"
 
 class MP_SK9822
 {
