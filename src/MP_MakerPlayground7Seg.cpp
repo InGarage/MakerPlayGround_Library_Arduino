@@ -44,6 +44,8 @@ void MP_MakerPlayground7Seg::sendData(int num, uint8_t dot, bool negative)
         }
     }
     serial.write((byte)0);
+    serial.write((byte)'\r');
+    serial.write((byte)'\n');
 }
 
 void MP_MakerPlayground7Seg::sendInvalid()
@@ -55,7 +57,8 @@ void MP_MakerPlayground7Seg::sendInvalid()
     serial.write((byte)0b01000000);
     serial.write((byte)0b01000000);
     serial.write((byte)0b00000000);
-    serial.write((byte)0);
+    serial.write((byte)'\r');
+    serial.write((byte)'\n');
 }
 
 void MP_MakerPlayground7Seg::showFloat(double num)
@@ -68,18 +71,20 @@ void MP_MakerPlayground7Seg::showFloat(double num)
         } else if (num < 1000) {
             sendData(num * 10, 0x02, false);
         } else if (num < 10000) {
-            sendData(num, 0x01, false);
+            sendData(num, 0x00, false);
         } else {
             sendInvalid();
         }
     } else {
         num = -num;
         if (num < 1) {
-            sendData(num * 100, 0x04, true);
+            sendData(num * 1000, 0x08, true);
         } else if (num < 10) {
-            sendData(num * 10, 0x02, true);
+            sendData(num * 100, 0x04, true);
         } else if (num < 100) {
-            sendData(num, 0x01, true);
+            sendData(num * 10, 0x02, true);
+        } else if (num < 1000) {
+            sendData(num, 0x00, true);
         } else {
             sendInvalid();
         }
@@ -99,11 +104,12 @@ void MP_MakerPlayground7Seg::showData(double value)
 void MP_MakerPlayground7Seg::off()
 {
     serial.write((byte)0x7f);
-    serial.write((byte)0);
+    serial.write((byte)3);
     serial.write((byte)0b00000000);
     serial.write((byte)0b00000000);
     serial.write((byte)0b00000000);
     serial.write((byte)0b00000000);
     serial.write((byte)0b00000000);
-    serial.write((byte)0);
+    serial.write((byte)'\r');
+    serial.write((byte)'\n');
 }
