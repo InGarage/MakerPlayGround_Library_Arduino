@@ -8,7 +8,7 @@ class MP_SoilWithEnable
   public:
 	MP_SoilWithEnable(uint8_t data, uint8_t en);
 
-	double getHumidity();
+	double getPercent();
 	void init();
 
   private:

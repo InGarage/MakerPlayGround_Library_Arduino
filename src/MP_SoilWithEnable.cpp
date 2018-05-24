@@ -12,12 +12,12 @@ void MP_SoilWithEnable::init()
     pinMode(en, OUTPUT);
 }
 
-double MP_SoilWithEnable::getHumidity() 
+double MP_SoilWithEnable::getPercent()
 {
     digitalWrite(en, HIGH);
     delay(5);
 	double value = (analogRead(data) / 1023.0) * 100.0;
-    digitalWrite(en, LOW);
+	digitalWrite(en, LOW);
     return value;
 }
 
