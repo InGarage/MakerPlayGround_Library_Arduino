@@ -1,7 +1,8 @@
 #include "MP_APDS9960.h"
+#include "SparkFun_APDS9960.h"
 
 MP_APDS9960::MP_APDS9960()
-    : adps(SparkFun_APDS9960())
+    : apds(SparkFun_APDS9960())
 {
 }
 
@@ -26,22 +27,28 @@ void MP_APDS9960::init()
         Serial.println(F("Something went wrong during sensor init!"));
     }
 
-    // Start running the APDS-9960 gesture sensor engine
-    if ( apds.enableGestureSensor(false) ) {
-        Serial.println(F("Gesture sensor is now running"));
-    } else {
-        Serial.println(F("Something went wrong during gesture sensor init!"));
-    }
+//    // Start running the APDS-9960 gesture sensor engine
+//    if ( apds.enableGestureSensor(false) ) {
+//        Serial.println(F("Gesture sensor is now running"));
+//    } else {
+//        Serial.println(F("Something went wrong during gesture sensor init!"));
+//    }
 }
 
 double MP_APDS9960::getDistance()
 {
-    uint8_t proximity_data;
-    if ( !apds.readProximity(proximity_data) ) {
-        Serial.println(F("Error reading proximity value"));
-        return 255;
+    uint8_t x;
+    if ( !apds.readProximity(x) ) {
+        return 999999;
+        //Serial.println(F("Error reading proximity value"));
+        //return 255;
     } else {
-        return proximity_data;
+        double distance = 0.000858238872*x*x - 0.233873883*x + 26.3131278;
+        if(x > 136 || distance < 10 || distance > 20) {
+            return 999999;
+        }
+        Serial.println(distance);
+        return distance;
     }
 }
 
