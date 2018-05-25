@@ -10,9 +10,9 @@ void MP_Piezo::init()
     pinMode(this->pin, OUTPUT);
 }
 
-void MP_Piezo::beep(double frequency)
+void MP_Piezo::beep()
 {
-    tone(this->pin, frequency);
+    tone(this->pin, 2000);
     delay(100);
     noTone(this->pin);
 }

@@ -10,7 +10,7 @@ class MP_Piezo
     ~MP_Piezo(){};
 
     void init();
-    void beep(double frequency);
+    void beep();
     void play(double frequency, double duration);
 
   private:
