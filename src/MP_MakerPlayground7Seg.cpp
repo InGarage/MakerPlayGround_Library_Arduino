@@ -77,9 +77,7 @@ void MP_MakerPlayground7Seg::showFloat(double num)
         }
     } else {
         num = -num;
-        if (num < 1) {
-            sendData(num * 1000, 0x08, true);
-        } else if (num < 10) {
+        if (num < 10) {
             sendData(num * 100, 0x04, true);
         } else if (num < 100) {
             sendData(num * 10, 0x02, true);
