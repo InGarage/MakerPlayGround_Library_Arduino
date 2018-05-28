@@ -13,7 +13,7 @@ public:
     void update(unsigned long time);
 
     int readVirtualPin(uint8_t pin);   // pin = 0-7
-    void writeVirtualPin(char pin[], int value);   // pin = 0-7
+    void writeVirtualPin(char pin[], double value);   // pin = 0-7
 
     // high level function use by maker playground
     bool checkVirtualPinValue(char pin[], int value);
@@ -27,7 +27,7 @@ public:
     int getVirtualPin7();
 
     // TODO: find alternate implementation as these may be dangerous
-    static int value[8];
+    static double value[8];
     static uint8_t valueChanged; // flag indicated that the data has changed
 
 private:

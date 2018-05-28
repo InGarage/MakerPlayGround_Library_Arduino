@@ -5,7 +5,7 @@
 #include "MP_Blynk_ESP8266.h"
 #include <BlynkSimpleShieldEsp8266.h>
 
-int MP_Blynk_ESP8266::value[8];
+double MP_Blynk_ESP8266::value[8];
 uint8_t MP_Blynk_ESP8266::valueChanged;
 
 MP_Blynk_ESP8266::MP_Blynk_ESP8266(uint8_t rx, uint8_t tx, char* auth, char* ssid, char* pass)
@@ -52,7 +52,7 @@ int MP_Blynk_ESP8266::readVirtualPin(uint8_t pin)
     return MP_Blynk_ESP8266::value[pin];
 }
 
-void MP_Blynk_ESP8266::writeVirtualPin(char pin[], int value)
+void MP_Blynk_ESP8266::writeVirtualPin(char pin[], double value)
 {
     MP_Blynk_ESP8266::value[pin[0] - '0'] = value;
     MP_Blynk_ESP8266::valueChanged |= (1 << (pin[0] - '0'));
