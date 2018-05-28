@@ -44,10 +44,13 @@ double MP_APDS9960::getDistance()
         //return 255;
     } else {
         double distance = 0.000858238872*x*x - 0.233873883*x + 26.3131278;
-        if(x > 136 || distance < 10 || distance > 20) {
-            return 999999;
+        if(x > 136 || distance < 10 ) {
+            return 10;
         }
-        Serial.println(distance);
+        else if (distance > 20) {
+            return 20;
+        }
+        //Serial.println(distance);
         return distance;
     }
 }
