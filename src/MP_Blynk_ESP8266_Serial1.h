@@ -31,12 +31,20 @@ public:
     static uint8_t valueChanged; // flag indicated that the data has changed
 
 private:
+    void wifiInit();
+
+    void ledOn();
+    void ledOff();
+
+    String recvString(String target1, String target2, uint32_t timeout);
+
     ESP8266 wifi;
     char* auth;
     char* ssid;
     char* pass;
 
     unsigned long lastSendMillis;   // time of the last time we send some data to blynk server
+    unsigned long lastPingMillis;   // time of the last time we ping world's DNS server
 };
 
 #endif
