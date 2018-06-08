@@ -32,6 +32,7 @@ public:
 
 private:
     void wifiInit();
+    bool testConnection();
 
     void ledOn();
     void ledOff();

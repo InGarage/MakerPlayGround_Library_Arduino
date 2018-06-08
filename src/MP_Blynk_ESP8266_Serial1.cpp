@@ -1,7 +1,7 @@
 #define BLYNK_PRINT Serial
 #define ESP8266_BAUD 115200
 #define SEND_GAP 100    // in ms (100 mean we send 10 times / sec)
-#define PING_GAP 60000  // in ms (ping every 1 min)
+#define PING_GAP 30000  // in ms (ping every 30 secs)
 
 #include "MP_Blynk_ESP8266_Serial1.h"
 #include <BlynkSimpleShieldEsp8266.h>
@@ -24,11 +24,21 @@ MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(char* auth, char* ssid, char*
 }
 
 void MP_Blynk_ESP8266_Serial1::ledOn() {
+    // rev 0 board
     Serial1.println(F("AT+CIOWRITE=0,0"));
+    recvString("OK", "ERROR", 1000);
+    // rev1 board
+    Serial1.println(F("AT+SYSGPIOWRITE=0,0"));
+    recvString("OK", "ERROR", 1000);
 }
 
 void MP_Blynk_ESP8266_Serial1::ledOff() {
+    // rev 0 board
     Serial1.println(F("AT+CIOWRITE=0,1"));
+    recvString("OK", "ERROR", 1000);
+    // rev1 board
+    Serial1.println(F("AT+SYSGPIOWRITE=0,1"));
+    recvString("OK", "ERROR", 1000);
 }
 
 String MP_Blynk_ESP8266_Serial1::recvString(String target1, String target2, uint32_t timeout)
@@ -57,6 +67,10 @@ void MP_Blynk_ESP8266_Serial1::init()
 {
     Serial1.begin(115200);
     delay(10);
+    // setup gpio (rev 1 board only)
+    Serial1.println(F("AT+SYSGPIODIR=0,1"));
+    recvString("OK", "ERROR", 1000);
+    // connect to wifi and blynk server
     wifiInit();
 }
 
@@ -68,7 +82,22 @@ void MP_Blynk_ESP8266_Serial1::wifiInit()
         ledOff();
     }
     ledOn();
-    while(Blynk.connect() != true) {}
+    while(Blynk.connect() != true) {
+        if (testConnection()) {
+            while (!Blynk.connectWiFi(this->ssid, this->pass)) {
+                ledOff();
+            }
+            ledOn();
+        }
+        delay(PING_GAP);
+    }
+}
+
+bool MP_Blynk_ESP8266_Serial1::testConnection()
+{
+    Serial1.println(F("AT+PING=\"4.2.2.2\""));
+    String data = recvString("OK", "ERROR", 5000);
+    return (data.indexOf("OK") != -1);
 }
 
 void MP_Blynk_ESP8266_Serial1::update(unsigned long time) 
@@ -90,9 +119,7 @@ void MP_Blynk_ESP8266_Serial1::update(unsigned long time)
     // ping to check network connection
     if (time - lastPingMillis > PING_GAP)
     {
-        Serial1.println(F("AT+PING=\"4.2.2.2\""));
-        String data = recvString("OK", "ERROR", 5000);
-        if (data.indexOf("OK") == -1) {
+        if (!testConnection()) {
             wifiInit();
         }
         lastPingMillis = time;
