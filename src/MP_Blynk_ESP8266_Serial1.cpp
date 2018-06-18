@@ -9,13 +9,14 @@
 double MP_Blynk_ESP8266_Serial1::value[8];
 uint8_t MP_Blynk_ESP8266_Serial1::valueChanged;
 
-MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(char* auth, char* ssid, char* pass)
+MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(char* auth, char* ssid, char* pass, const String &tag)
     : wifi(&Serial1)
     , auth(auth)
     , ssid(ssid)
     , pass(pass)
     , lastSendMillis(0)
     , lastPingMillis(0)
+    ,tag(tag)
 {
     for (uint8_t i=0; i<8; i++)
     {
@@ -76,25 +77,45 @@ void MP_Blynk_ESP8266_Serial1::init()
 
 void MP_Blynk_ESP8266_Serial1::wifiInit()
 {
+    // initial wifi
+    MP_Log::i(tag,"Connecting to WiFi");
     ledOff();
     Blynk.config(this->wifi, this->auth, BLYNK_DEFAULT_DOMAIN, BLYNK_DEFAULT_PORT);
     while (!Blynk.connectWiFi(this->ssid, this->pass)) {
-        ledOff();
+        delay(1);
     }
+
+    // connected
+    MP_Log::i(tag,"Connected to WiFi successfully");
     ledOn();
+
+    // test for Blynk connection
     while(Blynk.connect() != true) {
-        if (testConnection()) {
+        MP_Log::i(tag,"Can't connect to Blynk server");
+        if (!testConnection()) {
+            // no internet
+            MP_Log::i(tag,"No Internet Access");
+            ledOff();
+            MP_Log::i(tag,"Reconnecting to Wifi");
             while (!Blynk.connectWiFi(this->ssid, this->pass)) {
-                ledOff();
+                delay(1);
             }
             ledOn();
+            MP_Log::i(tag,"Reconnected to WiFi successfully");
+            // reconnected success
+        }
+        else {
+            // having internet but can't connect to blink server
+            MP_Log::w(tag,"Can't connect to Blynk server, Please check your Blynk token");
         }
         delay(PING_GAP);
     }
+    MP_Log::i(tag,"Connected to Blynk Server successfully");
 }
 
 bool MP_Blynk_ESP8266_Serial1::testConnection()
 {
+    // test connection
     Serial1.println(F("AT+PING=\"4.2.2.2\""));
     String data = recvString("OK", "ERROR", 5000);
     return (data.indexOf("OK") != -1);
@@ -133,12 +154,14 @@ int MP_Blynk_ESP8266_Serial1::readVirtualPin(uint8_t pin)
 
 void MP_Blynk_ESP8266_Serial1::writeVirtualPin(char pin[], double value)
 {
+    MP_Log::i(tag,String("Send: ") + MP_Blynk_ESP8266_Serial1::value[pin[0] - '0']);
     MP_Blynk_ESP8266_Serial1::value[pin[0] - '0'] = value;
     MP_Blynk_ESP8266_Serial1::valueChanged |= (1 << (pin[0] - '0'));
 }
 
 bool MP_Blynk_ESP8266_Serial1::checkVirtualPinValue(char pin[], int value)
 {
+    MP_Log::i(tag,String("Receive: ") + MP_Blynk_ESP8266_Serial1::value[pin[0] - '0']);
     return MP_Blynk_ESP8266_Serial1::value[pin[0] - '0'] == value;
 }
 
