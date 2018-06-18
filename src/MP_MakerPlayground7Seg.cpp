@@ -2,14 +2,15 @@
 
 uint8_t digits[] = {0b00111111, 0b00000110, 0b01011011, 0b01001111, 0b01100110, 0b01101101, 0b01111101, 0b00000111, 0b01111111, 0b01101111};
 
-MP_MakerPlayground7Seg::MP_MakerPlayground7Seg(uint8_t tx, uint8_t rx) 
-    : serial(SoftwareSerial(rx, tx))
+MP_MakerPlayground7Seg::MP_MakerPlayground7Seg(uint8_t tx, uint8_t rx,const String &tag)
+    : serial(SoftwareSerial(rx,tx)),tag(tag)
 {
 }
 
 void MP_MakerPlayground7Seg::init()
 {
     serial.begin(9600);
+    MP_Log::i(tag,"Ready");
 }
 
 void MP_MakerPlayground7Seg::sendData(int num, uint8_t dot, bool negative)
@@ -92,11 +93,13 @@ void MP_MakerPlayground7Seg::showFloat(double num)
 void MP_MakerPlayground7Seg::showValue(double value)
 {
     showFloat(value);
+    MP_Log::i(tag,String("Show Value: ") + value);
 }
 
 void MP_MakerPlayground7Seg::showData(double value)
 {
     showFloat(value);
+    MP_Log::i(tag,String("Show Data: ") + value);
 }
 
 void MP_MakerPlayground7Seg::off()
@@ -110,4 +113,5 @@ void MP_MakerPlayground7Seg::off()
     serial.write((byte)0b00000000);
     serial.write((byte)'\r');
     serial.write((byte)'\n');
+    MP_Log::i(tag,"Off");
 }

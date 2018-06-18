@@ -1,7 +1,7 @@
 #include "MP_OneAnalogReadToSoundLevel.h"
 
-MP_OneAnalogReadToSoundLevel::MP_OneAnalogReadToSoundLevel(uint8_t pin)
-  : pin(pin)
+MP_OneAnalogReadToSoundLevel::MP_OneAnalogReadToSoundLevel(uint8_t pin,const String &tag)
+  : pin(pin),tag(tag)
 {
   
 }
@@ -13,6 +13,7 @@ void MP_OneAnalogReadToSoundLevel::init()
 	for (int i=1; i<MP_OneAnalogReadToSoundLevel_MAX_ARRAY; i++) {
         normal = 0.8 * normal + 0.2 * (analogRead(pin) - normal);
 	}
+	MP_Log::i(tag,"Ready");
 }
 
 
@@ -30,6 +31,7 @@ double MP_OneAnalogReadToSoundLevel::getSoundLevel()
 	if (val > 100) val = 100;
 	else if (val < 0) val = 0;
 	Serial.println(val);
+	MP_Log::i(tag,val);
 	return val;
 }
 

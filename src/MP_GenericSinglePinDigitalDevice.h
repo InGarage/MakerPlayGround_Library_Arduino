@@ -2,11 +2,12 @@
 #define MP_GENERICSINGLEPINDIGITALDEVICE_H
 
 #include <Arduino.h>
+#include "MP_Log.h"
 
 class MP_GenericSinglePinDigitalDevice
 {
 public:
-    MP_GenericSinglePinDigitalDevice(uint8_t pin);
+    MP_GenericSinglePinDigitalDevice(uint8_t pin,const String &tag);
 
     void init();
     void on();
@@ -14,6 +15,7 @@ public:
 
 private:
     uint8_t pin;
+    const String tag;
 };
 
 #endif
