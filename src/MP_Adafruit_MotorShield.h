@@ -7,11 +7,12 @@
 #include <Adafruit_MotorShield.h>
 #include "Adafruit_MS_PWMServoDriver.h"
 #include <Arduino.h>
+#include "MP_Log.h
 
 class MP_Adafruit_MotorShield //: MP_DCMotor
 {
   public:
-		MP_Adafruit_MotorShield() ;
+		MP_Adafruit_MotorShield(const String &tag) ;
 		~MP_Adafruit_MotorShield() {};
 		void on(char dir[], uint8_t speed) ;
 		void reverse() ;
@@ -22,7 +23,8 @@ class MP_Adafruit_MotorShield //: MP_DCMotor
   private:
 		Adafruit_MotorShield AFMS =Adafruit_MotorShield();
 		Adafruit_DCMotor *myMotor;
-		uint8_t pin=0; 
+		uint8_t pin=0;
+		const String tag;
 };
 
 #endif

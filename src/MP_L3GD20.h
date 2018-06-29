@@ -7,13 +7,14 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_L3GD20_U.h>
+#include "MP_Log.h"
 
 
 
 class MP_L3GD20 //: MP_Gyro
 {
   public:
-	
+	MP_L3GD20(const String &tag);
 	 ~MP_L3GD20() {};
 
 	 double getGyro_X() ;
@@ -25,6 +26,7 @@ class MP_L3GD20 //: MP_Gyro
   private:
 	  Adafruit_L3GD20_Unified gyro = Adafruit_L3GD20_Unified(20);
 	  sensors_event_t event;
+	  const String tag;
 	 
 
 };

@@ -6,10 +6,12 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <MPU6050.h>
+#include "MP_Log.h"
 
 class MP_MPU6050 // : MP_Mag
 {
   public:
+    MP_MPU6050(const String &tag);
 	~MP_MPU6050(){};
 
 	void init();
@@ -27,6 +29,7 @@ class MP_MPU6050 // : MP_Mag
 
   private:
 	MPU6050 accelgyro;
+	const String tag;
 };
 
 #endif

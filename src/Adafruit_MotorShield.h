@@ -58,6 +58,7 @@ class Adafruit_DCMotor
   uint8_t PWMpin, IN1pin, IN2pin;
   Adafruit_MotorShield *MC;
   uint8_t motornum;
+
 };
 
 class Adafruit_StepperMotor {
