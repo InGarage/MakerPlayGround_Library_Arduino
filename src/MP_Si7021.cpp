@@ -1,7 +1,7 @@
 #include "MP_Si7021.h"
 
 
-MP_L3GD20::MP_L3GD20(const String &tag)
+MP_Si7021::MP_Si7021(const String &tag)
 :   tag(tag)
 {
 }

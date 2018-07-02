@@ -20,4 +20,4 @@ bool MP_Waterlvl::isDry()
 {
     MP_Log::i(tag,"Dry");
 	return analogRead(pin) < 512;
-}  
+}

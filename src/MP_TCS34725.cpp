@@ -1,11 +1,9 @@
 #include "MP_TCS34725.h"
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
-
-
- MP_TCS34725::MP_TCS34725(const String &tag)
- : tag(tag)
+MP_TCS34725::MP_TCS34725(const String &tag)
+	:tag(tag)
 {
-  tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 }
 
 void MP_TCS34725::init() 

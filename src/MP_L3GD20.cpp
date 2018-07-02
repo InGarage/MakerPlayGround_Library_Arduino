@@ -10,10 +10,6 @@ MP_L3GD20::MP_L3GD20(const String &tag)
 
 void MP_L3GD20::init() 
 {
-
-	
-  Serial.begin(9600);
-  
   /* Enable auto-ranging */
   gyro.enableAutoRange(true);
  

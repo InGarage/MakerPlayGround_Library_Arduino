@@ -7,7 +7,7 @@
 #include <Adafruit_MotorShield.h>
 #include "Adafruit_MS_PWMServoDriver.h"
 #include <Arduino.h>
-#include "MP_Log.h
+#include "MP_Log.h"
 
 class MP_Adafruit_MotorShield //: MP_DCMotor
 {

@@ -15,9 +15,8 @@ void MP_DHT12::init()
     dht::ReadStatus chk = sensor.read();
     if(chk != dht::OK)
     {
-        Serial.println("Oops! DHT12 reading failed");
         MP_Log::e(tag,"Oops! DHT12 reading failed");
-	    while(1);
+	    while(1) delay(20);
 	}
 	MP_Log::i(tag,"Ready");
 }

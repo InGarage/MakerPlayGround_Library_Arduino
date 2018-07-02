@@ -12,7 +12,7 @@ class MP_RGB_LED_CC //: MP_Led
     ~MP_RGB_LED_CC(){};
 
     void init();
-    void on(char color[]);
+    void on(int red, int green, int blue, int brightness);
     void off();
 
   private:

@@ -1,6 +1,6 @@
 #include "MP_MAX4466.h"
 
-MP_MAX4466::MP_MAX4466(uint8_t pin)
+MP_MAX4466::MP_MAX4466(uint8_t pin,const String &tag)
 	:pin(pin),tag(tag)
 {
 
