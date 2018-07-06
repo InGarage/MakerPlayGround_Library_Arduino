@@ -45,9 +45,11 @@ void requestTime() {
 
 BLYNK_WRITE(InternalPinRTC) {
   long t = param.asLong();
+  /*
   Serial.print("Unix time: ");
   Serial.print(t);
   Serial.println();
+  */
 }
 
 void setup()

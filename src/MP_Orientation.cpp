@@ -8,7 +8,7 @@ MP_Orientation::MP_Orientation() {
 void MP_Orientation::init() {
     Wire.begin();
     mpu.initialize();
-    Serial.println(mpu.testConnection() ? "Connected" : "Connection failed");
+    //Serial.println(mpu.testConnection() ? "Connected" : "Connection failed");
 }
 
 double MP_Orientation::getRoll() {
@@ -16,12 +16,13 @@ double MP_Orientation::getRoll() {
     valx = map(ax, -17000, 17000, 0, 179);
     valy = map(ay, -17000, 17000, 0, 179);
     valz = map(az, -17000, 17000, 0, 179);
-    Serial.print("axis x = ") ; 
+    /* Serial.print("axis x = ") ;
     Serial.print(valx) ; 
     Serial.print(" axis y = ") ; 
     Serial.print(valy) ; 
     Serial.print(" axis z = ") ; 
-    Serial.println(valz) ; 
+    Serial.println(valz) ;
+    */
     return valx;
 }
 

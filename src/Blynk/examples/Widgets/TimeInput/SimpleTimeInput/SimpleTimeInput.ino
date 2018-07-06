@@ -36,8 +36,8 @@ char auth[] = "YourAuthToken";
 
 BLYNK_WRITE(V1) {
   long startTimeInSecs = param[0].asLong();
-  Serial.println(startTimeInSecs);
-  Serial.println();
+  //Serial.println(startTimeInSecs);
+  //Serial.println();
 }
 
 void setup()

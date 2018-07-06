@@ -30,7 +30,6 @@ double MP_OneAnalogReadToSoundLevel::getSoundLevel()
 	double val = (fabs(max - min) - 100.0) / 300.0 * 100.0;
 	if (val > 100) val = 100;
 	else if (val < 0) val = 0;
-	Serial.println(val);
 	MP_Log::i(tag,val);
 	return val;
 }

@@ -4,13 +4,14 @@
  int state = 0;
 void handleMessage(AdafruitIO_Data *data) {
 	pinMode(0, OUTPUT);
-   Serial.print("received <- ");
+   //Serial.print("received <- ");
 
+  /*
   if(data->toPinLevel() == HIGH)
     Serial.println("HIGH");
   else
     Serial.println("LOW");
-
+  */
   // write the current state to the led
   digitalWrite(0, (data->toPinLevel()));
 	/*pinMode(5, OUTPUT);
@@ -40,19 +41,19 @@ if(state ==0){
 	 IOKEY = IO_KEY;
 	  WIFISSID =WIFI_SSID;
 	  WIFIPASS=WIFI_PASS;
-  Serial.print("Connecting to Adafruit IO");
+  // Serial.print("Connecting to Adafruit IO");
   io->connect();
   name->onMessage(handleMessage);
   // wait for a connection
-  Serial.println(state);
+  // Serial.println(state);
   while(io->status() < AIO_CONNECTED) {
-    Serial.print(".");
+  //  Serial.print(".");
     delay(500);
   }
 
   // we are connected
-  Serial.println();
-  Serial.println(io->statusText());
+  // Serial.println();
+  // Serial.println(io->statusText());
 
 }
 }

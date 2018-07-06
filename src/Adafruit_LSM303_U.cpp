@@ -457,9 +457,10 @@ bool Adafruit_LSM303_Mag_Unified::getEvent(sensors_event_t *event) {
     else
     {
 #ifdef LSM303_DEBUG
-      Serial.print(raw.x); Serial.print(" ");
+      /* Serial.print(raw.x); Serial.print(" ");
       Serial.print(raw.y); Serial.print(" ");
       Serial.print(raw.z); Serial.println(" ");
+      */
 #endif
       /* Check if the sensor is saturating or not */
       if ( (raw.x >= 2040) | (raw.x <= -2040) |
@@ -473,42 +474,42 @@ bool Adafruit_LSM303_Mag_Unified::getEvent(sensors_event_t *event) {
             setMagGain(LSM303_MAGGAIN_8_1);
             readingValid = false;
 #ifdef LSM303_DEBUG
-            Serial.println("Changing range to +/- 8.1");
+            // Serial.println("Changing range to +/- 8.1");
 #endif
             break;
           case LSM303_MAGGAIN_4_7:
             setMagGain(LSM303_MAGGAIN_5_6);
             readingValid = false;
 #ifdef LSM303_DEBUG
-            Serial.println("Changing range to +/- 5.6");
+            // Serial.println("Changing range to +/- 5.6");
 #endif
             break;
           case LSM303_MAGGAIN_4_0:
             setMagGain(LSM303_MAGGAIN_4_7);
             readingValid = false;
 #ifdef LSM303_DEBUG
-            Serial.println("Changing range to +/- 4.7");
+            // Serial.println("Changing range to +/- 4.7");
 #endif
             break;
           case LSM303_MAGGAIN_2_5:
             setMagGain(LSM303_MAGGAIN_4_0);
             readingValid = false;
 #ifdef LSM303_DEBUG
-            Serial.println("Changing range to +/- 4.0");
+            // Serial.println("Changing range to +/- 4.0");
 #endif
             break;
           case LSM303_MAGGAIN_1_9:
             setMagGain(LSM303_MAGGAIN_2_5);
             readingValid = false;
 #ifdef LSM303_DEBUG
-            Serial.println("Changing range to +/- 2.5");
+            // Serial.println("Changing range to +/- 2.5");
 #endif
             break;
           case LSM303_MAGGAIN_1_3:
             setMagGain(LSM303_MAGGAIN_1_9);
             readingValid = false;
 #ifdef LSM303_DEBUG
-            Serial.println("Changing range to +/- 1.9");
+            // Serial.println("Changing range to +/- 1.9");
 #endif
             break;
           default:

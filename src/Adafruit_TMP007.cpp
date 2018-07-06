@@ -36,7 +36,7 @@ boolean Adafruit_TMP007::begin(uint8_t samplerate) {
   uint16_t did;
   did = read16(TMP007_DEVID);
 #ifdef TMP007_DEBUG
-  Serial.print("did = 0x"); Serial.println(did, HEX);
+  // Serial.print("did = 0x"); Serial.println(did, HEX);
 #endif
   if (did != 0x78) return false;
   return true;
@@ -48,7 +48,7 @@ double Adafruit_TMP007::readDieTempC(void) {
    double Tdie = readRawDieTemperature();
    Tdie *= 0.03125; // convert to celsius
 #ifdef TMP007_DEBUG
-   Serial.print("Tdie = "); Serial.print(Tdie); Serial.println(" C");
+   // Serial.print("Tdie = "); Serial.print(Tdie); Serial.println(" C");
 #endif
    return Tdie;
 }
@@ -62,7 +62,7 @@ double Adafruit_TMP007::readObjTempC(void) {
   double Tobj = raw;
   Tobj *= 0.03125; // convert to celsius
 #ifdef TMP007_DEBUG
-   Serial.print("Tobj = "); Serial.print(Tobj); Serial.println(" C");
+   // Serial.print("Tobj = "); Serial.print(Tobj); Serial.println(" C");
 #endif
    return Tobj;
 }
@@ -78,12 +78,12 @@ int16_t Adafruit_TMP007::readRawDieTemperature(void) {
   raw = TESTDIE;
 #endif
 
-  Serial.print("Raw Tambient: 0x"); Serial.print (raw, HEX);
+  // Serial.print("Raw Tambient: 0x"); Serial.print (raw, HEX);
   
 
   float v = raw/4;
   v *= 0.03125;
-  Serial.print(" ("); Serial.print(v); Serial.println(" *C)");
+  // Serial.print(" ("); Serial.print(v); Serial.println(" *C)");
 #endif
   raw >>= 2;
   return raw;
@@ -100,11 +100,11 @@ int16_t Adafruit_TMP007::readRawVoltage(void) {
   raw = TESTVOLT;
 #endif
 
-  Serial.print("Raw voltage: 0x"); Serial.print (raw, HEX);
+  // Serial.print("Raw voltage: 0x"); Serial.print (raw, HEX);
   float v = raw;
   v *= 156.25;
   v /= 1000;
-  Serial.print(" ("); Serial.print(v); Serial.println(" uV)");
+  // Serial.print(" ("); Serial.print(v); Serial.println(" uV)");
 #endif
   return raw; 
 }

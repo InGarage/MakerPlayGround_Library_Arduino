@@ -37,7 +37,7 @@ char auth[] = "YourAuthToken";
 void setup()
 {
   // Debug console
-  Serial.begin(9600);
+  // Serial.begin(9600);
 
   Blynk.begin(auth);
 }

@@ -17,7 +17,7 @@ void MP_L3GD20::init()
   if (!gyro.begin())
   {
     /* There was a problem detecting the L3GD20 ... check your connections */
-    Serial.println("Could not find a valid L3GD20 sensor, check wiring!");
+    // Serial.println("Could not find a valid L3GD20 sensor, check wiring!");
     MP_Log::e(tag,"Could not find a valid L3GD20 sensor, check wiring!");
     while (1);
   }

@@ -42,16 +42,18 @@ BLYNK_WRITE(V1) {
   int y = param[1].asInt();
 
   // Do something with x and y
+  /*
   Serial.print("X = ");
   Serial.print(x);
   Serial.print("; Y = ");
   Serial.println(y);
+  */
 }
 
 void setup()
 {
   // Debug console
-  Serial.begin(9600);
+  // Serial.begin(9600);
 
   Blynk.begin(auth);
 }

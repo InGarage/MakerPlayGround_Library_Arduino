@@ -21,7 +21,6 @@ void MP_MPU6050::init()
 	if (!accelgyro.testConnection())
 	{
 		/* There was a problem detecting the LSM303 ... check your connections */
-		Serial.println("Ooops, no MPU_6050 detected ... Check your wiring!");
 		MP_Log::i(tag,"Ooops, no MPU_6050 detected ... Check your wiring!");
 		while (1);
 	}

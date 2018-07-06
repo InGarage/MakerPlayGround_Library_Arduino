@@ -38,13 +38,15 @@ BLYNK_WRITE(V1) {
   GpsParam gps(param);
 
   // Print 6 decimal places for Lat, Lon
+/*
   Serial.print("Lat: ");
   Serial.println(gps.getLat(), 7);
 
   Serial.print("Lon: ");
   Serial.println(gps.getLon(), 7);
-
+*/
   // Print 2 decimal places for Alt, Speed
+/*
   Serial.print("Altitute: ");
   Serial.println(gps.getAltitude(), 2);
 
@@ -52,6 +54,7 @@ BLYNK_WRITE(V1) {
   Serial.println(gps.getSpeed(), 2);
 
   Serial.println();
+*/
 }
 
 void setup()

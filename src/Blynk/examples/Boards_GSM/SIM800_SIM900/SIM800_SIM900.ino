@@ -65,7 +65,7 @@ TinyGsm modem(SerialAT);
 void setup()
 {
   // Debug console
-  Serial.begin(9600);
+  // Serial.begin(9600);
 
   delay(10);
 
@@ -75,7 +75,7 @@ void setup()
 
   // Restart takes quite some time
   // To skip it, call init() instead of restart()
-  Serial.println("Initializing modem...");
+  // Serial.println("Initializing modem...");
   modem.restart();
 
   // Unlock your SIM card with a PIN
