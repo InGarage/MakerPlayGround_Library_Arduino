@@ -12,7 +12,7 @@ class MP_FlowSensor
     MP_FlowSensor(){};
 
     void init();
-    void update();
+    void update(unsigned long time);
     int isWaterFlow();
     double getFlow_Rate();
     double getTotal_Water_Amount();
@@ -21,12 +21,12 @@ class MP_FlowSensor
     uint8_t pin;
     const String tag;
 
-    float calibrationFactor;
+    double calibrationFactor;
 
     unsigned long oldTime;
-    float flowRate;
-    unsigned int flowMilliLitres;
-    unsigned long totalMilliLitres;
+    double flowRate;
+    double flowMilliLitres;
+    double totalMilliLitres;
     int flowChange;
 
     static volatile unsigned int pulseCount;

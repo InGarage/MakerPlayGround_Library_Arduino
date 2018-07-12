@@ -7,7 +7,7 @@ MP_FlowSensor::MP_FlowSensor(uint8_t pin,const String &tag)
 
 void MP_FlowSensor::init()
 {
-    this->calibrationFactor = 98.0;
+    this->calibrationFactor = 0.2381;
     this->flowRate          = 0.0;
     this->flowMilliLitres   = 0;
     this->totalMilliLitres  = 0;
@@ -17,26 +17,33 @@ void MP_FlowSensor::init()
     pulseCount = 0;
 
     pinMode(this->pin, INPUT_PULLUP);
-    attachPinChangeInterrupt(this->pin, MP_FlowSensor::interruptHandler, FALLING);
+    attachPCINT(digitalPinToPCINT(this->pin), MP_FlowSensor::interruptHandler, FALLING);
 
     MP_Log::i(tag, "Ready");
+    MP_Log::v(tag, "attach interrupt");
 }
 
-void MP_FlowSensor::update()
+void MP_FlowSensor::update(unsigned long time)
 {
-    if (millis() - oldTime > 100)
+    if (time - oldTime > 500)
     {
-        disablePinChangeInterrupt(this->pin);
+        MP_Log::v(tag, "update");
+        disablePCINT(digitalPinToPCINT(this->pin));
 
+        MP_Log::v(tag, pulseCount);
         unsigned long totalTimeMillis = (millis() - oldTime);
-        this->flowMilliLitres = this->pulseCount / this->calibrationFactor;
+        this->flowMilliLitres = pulseCount * this->calibrationFactor;
         this->flowRate = this->flowMilliLitres * 1000.0 / totalTimeMillis;  // mL per second
         this->totalMilliLitres = this->totalMilliLitres + this->flowMilliLitres;
-        this->flowChange = (flowMilliLitres > 10); // change will be detected if the flow is more than 10 mL
+        this->flowChange = (flowMilliLitres > 3); // change will be detected if the flow is more than 10 mL
+
+        MP_Log::v(tag, String("flow ML: ") + this->flowMilliLitres);
+        MP_Log::v(tag, String("flow Rate: ") + this->flowRate);
+        MP_Log::v(tag, String("flow totalMillis: ") + this->totalMilliLitres);
 
         this->oldTime = millis();
         pulseCount = 0;
-        enablePinChangeInterrupt(this->pin);
+        enablePCINT(digitalPinToPCINT(this->pin));
     }
 }
 
@@ -47,16 +54,19 @@ int MP_FlowSensor::isWaterFlow()
 
 double MP_FlowSensor::getFlow_Rate()
 {
+    MP_Log::v(tag, "getFlow_Rate");
     return this->flowRate;
 }
 
 double MP_FlowSensor::getTotal_Water_Amount()
 {
+    MP_Log::v(tag, "getTotal_Water_Amount");
     return this->totalMilliLitres;
 }
 
 void MP_FlowSensor::interruptHandler()
 {
+    MP_Log::v("Jet", "interrupt");
     pulseCount++;
 }
 
