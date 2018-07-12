@@ -1,7 +1,5 @@
 #include "MP_FlowSensor.h"
 
-volatile unsigned int MP_FlowSensor::pulseCount = 0;
-
 MP_FlowSensor::MP_FlowSensor(uint8_t pin,const String &tag)
     : pin(pin),tag(tag)
 {
@@ -19,7 +17,7 @@ void MP_FlowSensor::init()
     pulseCount = 0;
 
     pinMode(this->pin, INPUT_PULLUP);
-    enableInterrupt(this->pin | PINCHANGEINTERRUPT, MP_FlowSensor::interruptHandler, FALLING);
+    attachPinChangeInterrupt(this->pin, MP_FlowSensor::interruptHandler, FALLING);
 
     MP_Log::i(tag, "Ready");
 }
@@ -28,7 +26,7 @@ void MP_FlowSensor::update()
 {
     if (millis() - oldTime > 100)
     {
-        disableInterrupt(this->pin | PINCHANGEINTERRUPT);
+        disablePinChangeInterrupt(this->pin);
 
         unsigned long totalTimeMillis = (millis() - oldTime);
         this->flowMilliLitres = this->pulseCount / this->calibrationFactor;
@@ -38,7 +36,7 @@ void MP_FlowSensor::update()
 
         this->oldTime = millis();
         pulseCount = 0;
-        enableInterrupt(this->pin | PINCHANGEINTERRUPT, MP_FlowSensor::interruptHandler, FALLING);
+        enablePinChangeInterrupt(this->pin);
     }
 }
 
@@ -57,7 +55,9 @@ double MP_FlowSensor::getTotal_Water_Amount()
     return this->totalMilliLitres;
 }
 
-static void MP_FlowSensor::interruptHandler()
+void MP_FlowSensor::interruptHandler()
 {
     pulseCount++;
 }
+
+volatile unsigned int MP_FlowSensor::pulseCount = 0;

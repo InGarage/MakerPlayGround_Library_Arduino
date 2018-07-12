@@ -2,13 +2,13 @@
 #define MP_MAKERPLAYGROUND7SEG_H
 
 #include <Arduino.h>
-#include <SoftwareSerial.h>
+#include "SendOnlySoftwareSerial.h"
 #include "MP_Log.h"
 
 class MP_MakerPlayground7Seg
 {
 public:
-	MP_MakerPlayground7Seg(uint8_t tx, uint8_t rx,const String &tag);
+	MP_MakerPlayground7Seg(uint8_t tx, const String &tag);
 
 	void init();
 	void showValue(double num);
@@ -19,8 +19,8 @@ private:
 	void sendInvalid();
     void showFloat(double num);
     void sendData(int num, uint8_t dot, bool negative);
+	SendOnlySoftwareSerial serial;
     const String tag;
-	SoftwareSerial serial;
 };
 
 #endif

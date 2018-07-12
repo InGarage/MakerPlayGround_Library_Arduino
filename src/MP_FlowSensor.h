@@ -3,9 +3,7 @@
 
 #include <Arduino.h>
 #include "MP_Log.h"
-
-//#define EI_ARDUINO_INTERRUPTED_PIN
-#include "EnableInterrupt.h"
+#include "PinChangeInterrupt.h"
 
 class MP_FlowSensor
 {
