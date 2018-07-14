@@ -54,19 +54,16 @@ int MP_FlowSensor::isWaterFlow()
 
 double MP_FlowSensor::getFlow_Rate()
 {
-    MP_Log::v(tag, "getFlow_Rate");
     return this->flowRate;
 }
 
 double MP_FlowSensor::getTotal_Water_Amount()
 {
-    MP_Log::v(tag, "getTotal_Water_Amount");
     return this->totalMilliLitres;
 }
 
 void MP_FlowSensor::interruptHandler()
 {
-    MP_Log::v("Jet", "interrupt");
     pulseCount++;
 }
 
