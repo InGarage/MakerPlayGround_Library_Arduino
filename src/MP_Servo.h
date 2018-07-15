@@ -13,8 +13,9 @@ class MP_Servo//: MP_Led
 	void init();
 
   private:
-	uint8_t pin;
-	Servo myservo;
+		uint8_t pin;
+		Servo myservo;
+		int previous_degree;
     const String tag;
 };
 
