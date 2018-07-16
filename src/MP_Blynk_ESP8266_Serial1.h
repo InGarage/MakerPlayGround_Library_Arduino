@@ -3,12 +3,11 @@
 
 #include <Arduino.h>
 #include <ESP8266_Lib.h>
-#include "MP_Log.h"
 
 class MP_Blynk_ESP8266_Serial1 
 {
 public:
-    MP_Blynk_ESP8266_Serial1(char auth[], char ssid[], char pass[],const String &tag);
+    MP_Blynk_ESP8266_Serial1(char auth[], char ssid[], char pass[]);
 
     void init();
     void update(unsigned long time);
@@ -44,7 +43,6 @@ private:
     char* auth;
     char* ssid;
     char* pass;
-    const String tag;
 
     unsigned long lastSendMillis;   // time of the last time we send some data to blynk server
     unsigned long lastPingMillis;   // time of the last time we ping world's DNS server

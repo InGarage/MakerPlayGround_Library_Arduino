@@ -2,11 +2,10 @@
 #define MP_LED_H
 
 #include <Arduino.h>
-#include "MP_Log.h"
 class MP_LED //: MP_Led
 {
   public:
-    MP_LED(uint8_t pin,const String &tag);
+    MP_LED(uint8_t pin);
 
     void init();
     void on(int brightness);
@@ -14,7 +13,6 @@ class MP_LED //: MP_Led
 
   private:
     uint8_t pin;
-    const String tag;
 };
 
 #endif

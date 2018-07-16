@@ -6,13 +6,12 @@
 #include "DHT.h"
 
 #include <Arduino.h>
-#include "MP_Log.h"
 
 
 class MP_DHT11 //: MP_Baro
 {
   public:
-	 MP_DHT11(int pin,const String &tag);
+	 MP_DHT11(int pin);
 	 double getHumidity()  ;
 	 double getTemperature()  ;
 	 void init() ;
@@ -20,7 +19,6 @@ class MP_DHT11 //: MP_Baro
   private:
 	 DHT sensor;
 	 uint8_t pin;
-	 const String tag;
 
 };
 

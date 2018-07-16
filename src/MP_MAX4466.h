@@ -4,13 +4,12 @@
 //#include "MP_Sound.h"
 
 #include <Arduino.h>
-#include "MP_Log.h"
 
 
 class MP_MAX4466 //: MP_Sound
 {
   public:
-	  MP_MAX4466(uint8_t pin,const String &tag);
+	  MP_MAX4466(uint8_t pin);
 	 ~MP_MAX4466() {};
 
 	
@@ -19,7 +18,6 @@ class MP_MAX4466 //: MP_Sound
 
   private:
 	  uint8_t pin;
-	  const String tag;
 };
 
 #endif

@@ -5,13 +5,12 @@
 #include <Wire.h>
 #include "Adafruit_TMP007.h"
 #include <Arduino.h>
-#include "MP_Log.h"
 
 
 class MP_TMP007  //: MP_Temp
 {
   public:
-      MP_TMP007(const String &tag);
+      MP_TMP007();
 	 ~MP_TMP007() {};
 
 	
@@ -20,7 +19,6 @@ class MP_TMP007  //: MP_Temp
 
   private:
 	  Adafruit_TMP007 tmp007;
-	  const String tag;
 	 
 
 };

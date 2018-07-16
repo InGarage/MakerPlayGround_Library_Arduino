@@ -2,23 +2,19 @@
 #define MP_HY_SRF05_H
 
 #include <Arduino.h>
-#include "MP_Log.h"
 
 class MP_HY_SRF05 //: MP_Baro
 {
-  public:
+  	public:
 
-	 MP_HY_SRF05(uint8_t echo ,uint8_t trig,const String &tag ) ;
+		MP_HY_SRF05(uint8_t echo ,uint8_t trig) ;
 
-	 double getDistance() ;
-	 void init() ;
+		double getDistance() ;
+		void init() ;
 
-  private:
-	  uint8_t trig;
-	  uint8_t echo;
-	  const String tag;
-	 
-
+  	private:
+		uint8_t trig;
+		uint8_t echo;
 };
 
 #endif

@@ -3,12 +3,11 @@
 
 //#include "MP_Led.h"
 #include <Arduino.h>
-#include "MP_Log.h"
 
 class MP_RGB_LED_CC //: MP_Led
 {
   public:
-    MP_RGB_LED_CC(uint8_t r, uint8_t g, uint8_t b,const String &tag);
+    MP_RGB_LED_CC(uint8_t r, uint8_t g, uint8_t b);
     ~MP_RGB_LED_CC(){};
 
     void init();
@@ -19,7 +18,6 @@ class MP_RGB_LED_CC //: MP_Led
     uint8_t r;
     uint8_t g;
     uint8_t b;
-    const String tag;
 };
 
 #endif

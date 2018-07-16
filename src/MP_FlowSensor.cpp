@@ -1,7 +1,7 @@
 #include "MP_FlowSensor.h"
 
-MP_FlowSensor::MP_FlowSensor(uint8_t pin,const String &tag)
-    : pin(pin),tag(tag)
+MP_FlowSensor::MP_FlowSensor(uint8_t pin)
+    : pin(pin)
 {
 }
 
@@ -18,16 +18,12 @@ void MP_FlowSensor::init()
 
     pinMode(this->pin, INPUT_PULLUP);
     attachPCINT(digitalPinToPCINT(this->pin), MP_FlowSensor::interruptHandler, FALLING);
-
-    MP_Log::i(tag, "Ready");
-    MP_Log::v(tag, "attach interrupt");
 }
 
 void MP_FlowSensor::update(unsigned long time)
 {
     if (time - oldTime > 500)
     {
-        MP_Log::v(tag, "update");
         disablePCINT(digitalPinToPCINT(this->pin));
 
         MP_Log::v(tag, pulseCount);
@@ -36,10 +32,6 @@ void MP_FlowSensor::update(unsigned long time)
         this->flowRate = this->flowMilliLitres * 1000.0 / totalTimeMillis;  // mL per second
         this->totalMilliLitres = this->totalMilliLitres + this->flowMilliLitres;
         this->flowChange = (flowMilliLitres > 3); // change will be detected if the flow is more than 10 mL
-
-        MP_Log::v(tag, String("flow ML: ") + this->flowMilliLitres);
-        MP_Log::v(tag, String("flow Rate: ") + this->flowRate);
-        MP_Log::v(tag, String("flow totalMillis: ") + this->totalMilliLitres);
 
         this->oldTime = millis();
         pulseCount = 0;

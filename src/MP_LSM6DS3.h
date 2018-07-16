@@ -4,12 +4,11 @@
 #include <Arduino.h>
 #include "SparkFunLSM6DS3.h"
 #include "Wire.h"
-#include "MP_Log.h"
 
 class MP_LSM6DS3
 {
 public:
-		MP_LSM6DS3(const String &tag);
+		MP_LSM6DS3();
 
 		void init();
 
@@ -24,7 +23,6 @@ public:
 
 private:
 		LSM6DS3 imu;
-		const String tag;
 };
 
 #endif

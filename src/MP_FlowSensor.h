@@ -2,13 +2,12 @@
 #define MP_FLOW_SENSOR_H
 
 #include <Arduino.h>
-#include "MP_Log.h"
 #include "PinChangeInterrupt.h"
 
 class MP_FlowSensor
 {
   public:
-    MP_FlowSensor(uint8_t pin, const String &tag);
+    MP_FlowSensor(uint8_t pin);
     MP_FlowSensor(){};
 
     void init();
@@ -19,7 +18,6 @@ class MP_FlowSensor
 
   private:
     uint8_t pin;
-    const String tag;
 
     double calibrationFactor;
 

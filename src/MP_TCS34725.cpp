@@ -1,25 +1,20 @@
 #include "MP_TCS34725.h"
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
-MP_TCS34725::MP_TCS34725(const String &tag)
-	:tag(tag)
+MP_TCS34725::MP_TCS34725()
 {
 }
 
 void MP_TCS34725::init() 
 {
   Serial.println("Color View Test!");
-  MP_Log::v(tag,"Color View Test!");
   if (tcs.begin()) {
     Serial.println("Found sensor");
-    MP_Log::v(tag,"Found sensor");
   } else {
     Serial.println("No TCS34725 found ... check your connections");
-    MP_Log::e(tag,"No TCS34725 found ... check your connections");
 
     while (1); // halt!
   }
-  MP_Log::i(tag,"Ready");
 }
 
 float MAX (float r, float g, float b)

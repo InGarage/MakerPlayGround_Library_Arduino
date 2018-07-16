@@ -1,8 +1,8 @@
 #include "MP_HY_SRF05.h"
 
 
-MP_HY_SRF05::MP_HY_SRF05(uint8_t echo ,uint8_t trig,const String &tag )
-  : trig(trig), echo(echo),tag(tag)
+MP_HY_SRF05::MP_HY_SRF05(uint8_t echo ,uint8_t trig)
+  : trig(trig), echo(echo)
 {
   
 }
@@ -11,7 +11,6 @@ void MP_HY_SRF05::init()
 {	
 	pinMode(this->trig,OUTPUT);
 	pinMode(this->echo,INPUT);
-	MP_Log::i(tag,"Ready");
 }
 
 double MP_HY_SRF05::getDistance() {	
@@ -26,7 +25,6 @@ double MP_HY_SRF05::getDistance() {
         digitalWrite(trig, LOW);
         cm = pulseIn(echo, HIGH) / 29.0 / 2.0 ;
   	} while(cm>3000);
-  	MP_Log::i(tag,cm);
     return cm;
 
 }

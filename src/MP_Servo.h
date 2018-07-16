@@ -3,11 +3,10 @@
 
 #include <Arduino.h>
 #include <Servo.h>
-#include "MP_Log.h"
 class MP_Servo//: MP_Led
 {
   public:
-	MP_Servo(uint8_t pin,const String &tag);
+	MP_Servo(uint8_t pin);
 
 	void moveto(int degree);
 	void init();
@@ -16,7 +15,6 @@ class MP_Servo//: MP_Led
 		uint8_t pin;
 		Servo myservo;
 		int previous_degree;
-    const String tag;
 };
 
 #endif

@@ -2,12 +2,11 @@
 #define MP_ARDUINOALL_FAN_H
 
 #include <Arduino.h>
-#include "MP_Log.h"
 
 class MP_Arduinoall_Fan //: MP_DCMotor
 {
   public:
-    MP_Arduinoall_Fan(uint8_t inA, uint8_t inB,const String &tag);
+    MP_Arduinoall_Fan(uint8_t inA, uint8_t inB);
     ~MP_Arduinoall_Fan(){};
 
     void init();
@@ -19,7 +18,6 @@ class MP_Arduinoall_Fan //: MP_DCMotor
   private:
     uint8_t inA;
     uint8_t inB;
-    const String tag;
 };
 
 #endif

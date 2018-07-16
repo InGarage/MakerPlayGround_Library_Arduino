@@ -4,12 +4,11 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "SparkFun_APDS9960.h"
-#include "MP_Log.h"
 
 class MP_APDS9960
 {
 public:
-    MP_APDS9960(const String &tag);
+    MP_APDS9960();
 
     void init();
     double getDistance();
@@ -18,7 +17,6 @@ public:
 
 private:
     SparkFun_APDS9960 apds;
-    const String tag;
 };
 
 #endif

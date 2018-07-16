@@ -1,9 +1,8 @@
 #include "MP_SK9822.h"
 
-MP_SK9822::MP_SK9822(uint8_t data, uint8_t clk,const String &tag)
+MP_SK9822::MP_SK9822(uint8_t data, uint8_t clk)
     : data(data)
     , clk(clk)
-    , tag(tag)
 {
 }
 
@@ -13,7 +12,6 @@ void MP_SK9822::init()
     pinMode(data, OUTPUT);
     digitalWrite(clk, LOW);
     pinMode(clk, OUTPUT);
-    MP_Log::i(tag,"Ready");
 }
 
 void MP_SK9822::on(int red, int green, int blue, int brightness)
@@ -21,7 +19,6 @@ void MP_SK9822::on(int red, int green, int blue, int brightness)
     startFrame();
     sendColor(red, green, blue, ((float) brightness / 100.0) * 31);
     endFrame(1);
-    MP_Log::i(tag,"On");
 }
 
 void MP_SK9822::startFrame()
@@ -84,5 +81,4 @@ void MP_SK9822::off()
     startFrame();
     sendColor(0, 0, 0, 0);
     endFrame(1);
-    MP_Log::i(tag,"Off");
 }

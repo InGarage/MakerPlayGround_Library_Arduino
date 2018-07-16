@@ -2,8 +2,8 @@
 #include "MP_TCS3200.h"
 
 
- MP_TCS3200::MP_TCS3200(uint8_t s0,uint8_t s1,uint8_t s2,uint8_t s3,uint8_t out,uint8_t LED,const String &tag)
- :s0(s0),s1(s1),s2(s2),s3(s3),out(out),LED(LED),tag(tag)
+ MP_TCS3200::MP_TCS3200(uint8_t s0,uint8_t s1,uint8_t s2,uint8_t s3,uint8_t out,uint8_t LED)
+ :s0(s0),s1(s1),s2(s2),s3(s3),out(out),LED(LED)
 {
  
 }
@@ -78,7 +78,6 @@ pinMode(out, INPUT);
 digitalWrite(s0, HIGH);
 digitalWrite(s1, HIGH);
 digitalWrite(LED, LOW);
-MP_Log::i(tag,"Ready");
 }
 
 int MP_TCS3200::isColor(char color[]) 
@@ -123,56 +122,47 @@ Serial.println("-----"+(hsv[0]>=270 && hsv[0]<330)&&(strcmp(color, "Magenta") ==
  if(hsv[2]>97&&hsv[1]<5&&strcmp(color, "White") == 0)
 {
    Serial.println("White") ;
-   MP_Log::i(tag,"White");
   return 1;
 }
 
  if((hsv[0]>=330 || hsv[0]<15)&&strcmp(color, "Red") == 0)
 {
    Serial.println("Red") ;
-   MP_Log::i(tag,"Red");
   return 1;
 }
  if((hsv[0]>=15 && hsv[0]<25)&&strcmp(color, "Orange") == 0)
 {
    Serial.println("Orange") ;
-   MP_Log::i(tag,"Orange");
   return 1;
 }
  if((hsv[0]>=25 && hsv[0]<75)&&strcmp(color, "Yellow") == 0) //30
 {
    Serial.println("Yellow") ;
-   MP_Log::i(tag,"Yellow");
   return 1;
 }
  if((hsv[0]>=75 && hsv[0]<165)&&strcmp(color, "Green") == 0)//135
 {
    Serial.println("Green") ;
-   MP_Log::i(tag,"Green");
   return 1;
 }
  if((hsv[0]>=165 && hsv[0]<220)&&strcmp(color, "Cyan") == 0) //210
 {
    Serial.println("Cyan") ;
-   MP_Log::i(tag,"Cyan");
   return 1;
 }
  if((hsv[0]>=220 && hsv[0]<235)&&strcmp(color, "Blue") == 0) //225
 {
    Serial.println("Blue") ;
-   MP_Log::i(tag,"Blue");
   return 1;
 }
  if((hsv[0]>=235 && hsv[0]<270)&&strcmp(color, "Violet") == 0)
 {
    Serial.println("Violet") ;
-   MP_Log::i(tag,"Violet");
   return 1;
 }
  if((hsv[0]>=270 && hsv[0]<330)&&strcmp(color, "Magenta") == 0)
 {
    Serial.println("Margenta") ;
-   MP_Log::i(tag,"Margenta");
   return 1;
 }
 Serial.println("mdkfmiwmgirwmg") ;

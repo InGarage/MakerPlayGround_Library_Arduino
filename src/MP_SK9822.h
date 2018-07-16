@@ -2,11 +2,11 @@
 #define MP_SK9822_H
 
 #include <Arduino.h>
-#include "MP_Log.h"
+
 class MP_SK9822
 {
 public:
-    MP_SK9822(uint8_t data, uint8_t clk,const String &tag);
+    MP_SK9822(uint8_t data, uint8_t clk);
 
     void init();
     void on(int red, int green, int blue, int brightness);
@@ -21,7 +21,6 @@ private:
 private:
     uint8_t data;
     uint8_t clk;
-    const String tag;
 };
 
 #endif

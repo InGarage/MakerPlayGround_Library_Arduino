@@ -9,14 +9,13 @@
 double MP_Blynk_ESP8266_Serial1::value[8];
 uint8_t MP_Blynk_ESP8266_Serial1::valueChanged;
 
-MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(char* auth, char* ssid, char* pass, const String &tag)
+MP_Blynk_ESP8266_Serial1::MP_Blynk_ESP8266_Serial1(char* auth, char* ssid, char* pass)
     : wifi(&Serial1)
     , auth(auth)
     , ssid(ssid)
     , pass(pass)
     , lastSendMillis(0)
     , lastPingMillis(0)
-    ,tag(tag)
 {
     for (uint8_t i=0; i<8; i++)
     {
@@ -78,7 +77,6 @@ void MP_Blynk_ESP8266_Serial1::init()
 void MP_Blynk_ESP8266_Serial1::wifiInit()
 {
     // initial wifi
-    MP_Log::i(tag,"Connecting to WiFi");
     ledOff();
     Blynk.config(this->wifi, this->auth, BLYNK_DEFAULT_DOMAIN, BLYNK_DEFAULT_PORT);
     while (!Blynk.connectWiFi(this->ssid, this->pass)) {
@@ -86,31 +84,24 @@ void MP_Blynk_ESP8266_Serial1::wifiInit()
     }
 
     // connected
-    MP_Log::i(tag,"Connected to WiFi successfully");
     ledOn();
 
     // test for Blynk connection
     while(Blynk.connect() != true) {
-        MP_Log::i(tag,"Can't connect to Blynk server");
         if (!testConnection()) {
             // no internet
-            MP_Log::i(tag,"No Internet Access");
             ledOff();
-            MP_Log::i(tag,"Reconnecting to Wifi");
             while (!Blynk.connectWiFi(this->ssid, this->pass)) {
                 delay(1);
             }
             ledOn();
-            MP_Log::i(tag,"Reconnected to WiFi successfully");
             // reconnected success
         }
         else {
             // having internet but can't connect to blink server
-            MP_Log::w(tag,"Can't connect to Blynk server, Please check your Blynk token");
         }
         delay(PING_GAP);
     }
-    MP_Log::i(tag,"Connected to Blynk Server successfully");
 }
 
 bool MP_Blynk_ESP8266_Serial1::testConnection()
