@@ -1,0 +1,40 @@
+{
+  "id": "POWER_1",
+  "brand": "MakerPlayground",
+  "model": "Battery",
+  "url": "http://www.makerplayground.io/library/POWER_1",
+  "type": "PERIPHERAL",
+  "formfactor": "MAKER_PLAYGROUND",
+  "pioId": "",
+  "width": 0.0,
+  "height": 0.0,
+  "hostConnectionsList": [],
+  "portInstancesMap": {
+    "EXT_SOURCE": [
+      {
+        "name": "",
+        "wiring": "WIRE",
+        "pinList": [
+          {
+            "name": "V+",
+            "function": "EXT_VCC",
+            "x": 0.0,
+            "y": 0.0,
+            "adapt_pin": "CREATE"
+          },
+          {
+            "name": "V-",
+            "function": "EXT_GND",
+            "x": 0.0,
+            "y": 0.0,
+            "adapt_pin": "CREATE"
+          }
+        ]
+      }
+    ]
+  },
+  "genericDeviceCompatibleList": [],
+  "platformLibrariesMap": {
+    "ARDUINO": []
+  }
+}

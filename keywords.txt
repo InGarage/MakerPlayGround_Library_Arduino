@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-MP_GeneralLed	KEYWORD1	MP_GeneralLed
+MP_GeneralLed	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
